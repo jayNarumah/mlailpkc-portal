@@ -9,14 +9,19 @@ import { BadgeModule } from 'primeng/badge';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { RippleModule } from 'primeng/ripple';
-import { AppMenuComponent } from './app.menu.component';
-import { AppMenuitemComponent } from './app.menuitem.component';
+import { AppMenuComponent } from './components/app.menu.component';
+import { AppMenuitemComponent } from './components/app.menuitem.component';
 import { RouterModule } from '@angular/router';
-import { AppTopBarComponent } from './app.topbar.component';
-import { AppFooterComponent } from './app.footer.component';
+import { AppTopBarComponent } from './components/app.topbar.component';
+import { AppFooterComponent } from './components/app.footer.component';
 import { AppConfigModule } from './config/config.module';
-import { AppSidebarComponent } from "./app.sidebar.component";
+import { AppSidebarComponent } from "./components/app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
+import { MenuModule } from 'primeng/menu';
+import { ChipModule } from 'primeng/chip';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
     declarations: [
@@ -33,7 +38,12 @@ import { AppLayoutComponent } from "./app.layout.component";
         HttpClientModule,
         BrowserAnimationsModule,
         InputTextModule,
+        MenuModule,
         SidebarModule,
+        ChipModule,
+        TableModule,
+        ButtonModule,
+        OverlayPanelModule,
         BadgeModule,
         RadioButtonModule,
         InputSwitchModule,
