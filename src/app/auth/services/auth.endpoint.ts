@@ -8,7 +8,7 @@ import { environment } from "src/environments/environment";
     providedIn: 'root',
 })
 export class AuthEndpoint {
-    baseUrl = `${environment.apiUrl}/auth`;
+    baseUrl = `${environment.apiUrl}/portal/auth`;
 
     constructor(private readonly httpClient: HttpClient) { }
 

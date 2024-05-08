@@ -1,6 +1,6 @@
 
 export class AuthLoginRequestDto {
-    username!: string;
+    email_address!: string;
     password!: string;
 }
 
@@ -12,7 +12,6 @@ export interface AuthLoginResponseDto {
 export interface AuthLoggedInUserDto {
     id: number;
     uid: string;
-    full_name: string;
     email_address: string;
 }
 

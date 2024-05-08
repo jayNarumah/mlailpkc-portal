@@ -55,7 +55,7 @@ export class LoginPageComponent implements OnInit {
 
     doLogin() {
         const formData = {
-            username: this.loginForm.value.username ?? '',
+            email_address: this.loginForm.value.username ?? '',
             password: this.loginForm.value.password ?? '',
         };
         this.loading = true;
@@ -71,11 +71,11 @@ export class LoginPageComponent implements OnInit {
                     })
                 );
 
-                this.router.navigate(['/module/']);
+                this.router.navigate(['/']);
                 // Show toast
                 this.appNotificationService.showSuccess({
                     title: 'Login Successful!',
-                    detail: `Welcome back, ${response.user.full_name}`,
+                    detail: `Welcome back, ${response.user.email_address}`,
                 });
                 this.loading = false;
                 this.declined = false;
