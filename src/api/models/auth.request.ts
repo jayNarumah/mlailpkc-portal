@@ -1,6 +1,6 @@
 
 export class AuthLoginRequestDto {
-    email_address!: string;
+    username!: string;
     password!: string;
 }
 

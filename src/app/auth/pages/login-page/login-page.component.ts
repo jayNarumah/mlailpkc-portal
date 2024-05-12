@@ -55,7 +55,7 @@ export class LoginPageComponent implements OnInit {
 
     doLogin() {
         const formData = {
-            email_address: this.loginForm.value.username ?? '',
+            username: this.loginForm.value.username ?? '',
             password: this.loginForm.value.password ?? '',
         };
         this.loading = true;
