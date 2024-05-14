@@ -1,4 +1,3 @@
-
 export class AuthLoginRequestDto {
     username!: string;
     password!: string;
@@ -10,9 +9,9 @@ export interface AuthLoginResponseDto {
 }
 
 export interface AuthLoggedInUserDto {
-    id: number;
     uid: string;
-    email_address: string;
+    full_nane: string;
+    permissions: string[];
 }
 
 export class ForgotPasswordDto {
