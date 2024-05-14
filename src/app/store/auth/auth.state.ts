@@ -1,6 +1,6 @@
-import { UserResource } from "src/api/resources/user.model";
+import { AuthLoggedInUserDto } from 'src/api/models/auth.request';
 
 export interface AppAuthState {
     access_token: string | null;
-    user: UserResource | null;
+    user: AuthLoggedInUserDto | null;
 }

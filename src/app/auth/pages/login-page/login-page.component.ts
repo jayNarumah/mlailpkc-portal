@@ -40,8 +40,8 @@ export class LoginPageComponent implements OnInit {
         private readonly appStore: Store<AppState>,
         private readonly router: Router,
         private readonly appNotificationService: AppNotificationService,
-        private readonly appLoadingService: AppLoadingService,
-    ) { }
+        private readonly appLoadingService: AppLoadingService
+    ) {}
 
     ngOnInit(): void {
         this.logout();
@@ -75,7 +75,7 @@ export class LoginPageComponent implements OnInit {
                 // Show toast
                 this.appNotificationService.showSuccess({
                     title: 'Login Successful!',
-                    detail: `Welcome back, ${response.user.email_address}`,
+                    detail: `Welcome back, ${response.user.full_nane}`,
                 });
                 this.loading = false;
                 this.declined = false;
@@ -128,7 +128,7 @@ export class LoginPageComponent implements OnInit {
                     Validators.required,
                     Validators.minLength(8),
                 ]),
-            },
+            }
             // { validator: MustMatch('password', 'confirmPassword') }
         );
     }
