@@ -1,13 +1,14 @@
-import { createReducer, on } from "@ngrx/store";
-import { AppAuthActions } from "./auth.action";
-import { AppAuthState } from "./auth.state";
-import { UserResource } from "src/api/resources/user.model";
+import { createReducer, on } from '@ngrx/store';
+import { AppAuthActions } from './auth.action';
+import { AppAuthState } from './auth.state';
+import { UserResource } from 'src/api/resources/user.model';
+import { AuthLoggedInUserDto } from 'src/api/models/auth.request';
 
 const LOCAL_STORAGE_KEY_ACCESS_TOKEN = 'access_token';
 const LOCAL_STORAGE_KEY_USER = 'user';
 
-function validateUserFromLocalStorage(o: any): o is UserResource {
-    return "id" in o && "email" in o && "user_type" in o;
+function validateUserFromLocalStorage(o: any): o is AuthLoggedInUserDto {
+    return 'uid' in o && 'full_name' in o && 'permissions' in o;
 }
 
 function getAccessTokenFromLocalStorage(): string | null {
@@ -19,7 +20,7 @@ function setAccessTokenToLocalStorage(access_token: string): void {
     localStorage.setItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN, access_token);
 }
 
-function getUserFromLocalStorage(): UserResource | null {
+function getUserFromLocalStorage(): AuthLoggedInUserDto | null {
     const serialized_user = localStorage.getItem(LOCAL_STORAGE_KEY_USER);
     if (serialized_user) {
         const user = JSON.parse(serialized_user);
@@ -30,7 +31,7 @@ function getUserFromLocalStorage(): UserResource | null {
     return null;
 }
 
-function setUserToLocalStorage(user: UserResource): void {
+function setUserToLocalStorage(user: AuthLoggedInUserDto): void {
     localStorage.setItem(LOCAL_STORAGE_KEY_USER, JSON.stringify(user));
 }
 
@@ -47,13 +48,14 @@ export const defaultAppAuthState: AppAuthState = {
     user: getUserFromLocalStorage(),
 };
 
-export const appAuthReducer = createReducer<AppAuthState>(defaultAppAuthState,
+export const appAuthReducer = createReducer<AppAuthState>(
+    defaultAppAuthState,
     on(AppAuthActions.login, (state, props) => {
         setAccessTokenToLocalStorage(props.access_token);
         setUserToLocalStorage(props.user);
         return {
             access_token: props.access_token,
-            user: props.user
+            user: props.user,
         };
     }),
     on(AppAuthActions.logout, (_) => {
@@ -61,7 +63,7 @@ export const appAuthReducer = createReducer<AppAuthState>(defaultAppAuthState,
         removeUserFromLocalStorage();
         return {
             access_token: null,
-            user: null
+            user: null,
         };
-    }),
+    })
 );
