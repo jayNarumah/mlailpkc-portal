@@ -69,11 +69,12 @@ export class RegistrationPageComponent implements OnInit {
         };
         this.appLoadingService.startLoading('Login...');
         this.registrationEndpoint.signup(formData).subscribe({
-            next: (response) => {
+            next: () => {
                 this.appNotificationService.showSuccess({
                     title: 'Registration !',
                     detail: `was Successful`,
                 });
+                this.declined = false;
 
                 this.router.navigate(['/auth/login']);
                 // Show toast
@@ -81,9 +82,10 @@ export class RegistrationPageComponent implements OnInit {
                 this.appLoadingService.stopLoading();
             },
             error: (error) => {
-                const apiError = error;
+                const apiError = error || 'Server Error !';
+                this.declined = true;
                 this.appLoadingService.stopLoading();
-
+                this.msg = apiError;
                 this.appNotificationService.showError({
                     title: 'Oops !',
                     detail: error || 'Server Error !',
