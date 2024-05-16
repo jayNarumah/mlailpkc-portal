@@ -50,7 +50,7 @@ export class RegistrationPageComponent implements OnInit {
     ngOnInit(): void {
         this.studentCategoryEndpoint.list()
             .subscribe({
-                next: (response) => this.studentCategories = response,
+                next: (response) => this.studentCategories = response.data,
                 error: (error) => console.log(error),
             });
     }
@@ -80,13 +80,13 @@ export class RegistrationPageComponent implements OnInit {
 
                 this.appLoadingService.stopLoading();
             },
-            error: (error: ApiError) => {
+            error: (error) => {
                 const apiError = error;
                 this.appLoadingService.stopLoading();
 
-                this.appNotificationService.showSuccess({
-                    title: 'Registration !',
-                    detail: `was Successful`,
+                this.appNotificationService.showError({
+                    title: 'Oops !',
+                    detail: error || 'Server Error !',
                 });
             },
         });
