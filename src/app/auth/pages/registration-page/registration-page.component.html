@@ -54,10 +54,11 @@
         <div class="grid justify-content-center p-2 lg:p-0" style="min-width: 60%">
             <div class="card shadow-2 surface-card w-full lg:w-5 pt-8">
                 <div class="text-left mb-5">
-                    <span class="black-font"><strong>Register to Mlailkpc Portal</strong></span>
-                    <div class="text-800 text-3xl font-medium">
-                        <span class="black-font"><strong>Please create an account here</strong></span>
+                    <div class="text-800 mb-2 text-3xl font-medium">
+                        <span class="black-font"><strong>Register to Mlailkpc Portal</strong></span>
                     </div>
+                    <span class="black-font">Please create an account here</span>
+
 
                     <div *ngIf="declined" class="alert alert-danger" role="alert">
                         <p-messages [(value)]="msg" [enableService]="false"></p-messages>
