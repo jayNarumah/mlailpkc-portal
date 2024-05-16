@@ -1,0 +1,5 @@
+services:
+  mlailpkc_portal:
+    build: .
+    ports:
+      - 5173:5173

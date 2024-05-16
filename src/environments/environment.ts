@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://127.0.0.1:8082/api/student',
+    apiUrl: 'https://mlailpkc-api-839a553f0085.herokuapp.com/api',
 };
 
 /*

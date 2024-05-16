@@ -9,9 +9,9 @@ import { StudentCateogry } from '../models/student-category.model';
 export class StudentCategoryEndpoint {
     parentUri = '/student-categories';
 
-    constructor(private readonly httpClient: HttpClient) {}
+    constructor(private readonly httpClient: HttpClient) { }
 
-    list(): Observable<StudentCateogry> {
-        return this.httpClient.get<StudentCateogry>(`${this.parentUri}/list`);
+    list(): Observable<StudentCateogry[]> {
+        return this.httpClient.get<StudentCateogry[]>(`${this.parentUri}/list`);
     }
 }

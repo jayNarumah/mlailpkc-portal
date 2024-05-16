@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 import { AppAuthActions } from 'src/app/store/auth/auth.action';
 import { ReportModel } from 'src/api/models/report.model';
 import { AuthEndpoint } from '../../services/auth.endpoint';
-import { HttpClientResponseError } from 'src/api/models/api-interfaces';
+import { ApiError, HttpClientResponseError } from 'src/api/models/api-interfaces';
 
 @Component({
     selector: 'inventory-platform-budgeting-login-page',
@@ -41,7 +41,7 @@ export class LoginPageComponent implements OnInit {
         private readonly router: Router,
         private readonly appNotificationService: AppNotificationService,
         private readonly appLoadingService: AppLoadingService
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         this.logout();
@@ -81,13 +81,9 @@ export class LoginPageComponent implements OnInit {
                 this.declined = false;
                 this.appLoadingService.stopLoading();
             },
-            error: (error: HttpClientResponseError) => {
-                const apiError = error.error.message;
+            error: (error: ApiError) => {
+                const apiError = error;
                 this.appLoadingService.stopLoading();
-                this.appNotificationService.showError({
-                    title: apiError.error,
-                    detail: apiError.message,
-                });
 
                 this._setErrorMessage(apiError.message);
                 this.declined = true;

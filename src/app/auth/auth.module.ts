@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { UiModule } from "../ui/ui.module";
+import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 
 const routes: Routes = [
     {
@@ -12,6 +13,7 @@ const routes: Routes = [
         component: AuthLayoutComponent,
         children: [
             { path: 'login', component: LoginPageComponent },
+            { path: 'register', component: RegistrationPageComponent },
             { path: '', redirectTo: 'login', pathMatch: 'prefix' },
         ],
     },
@@ -27,6 +29,7 @@ const routes: Routes = [
     declarations: [
         AuthLayoutComponent,
         LoginPageComponent,
+        RegistrationPageComponent
     ],
     // providers: [...httpInterceptorProviders]
 })
