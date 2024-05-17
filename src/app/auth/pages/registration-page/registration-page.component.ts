@@ -60,14 +60,15 @@ export class RegistrationPageComponent implements OnInit {
     }
 
     signup() {
+        const gender: string = this.registrationFormControls['gender'].value;
         const formData: SignupRequestDto = {
             full_name: this.registrationFormControls['full_name'].value,
             email_address: this.registrationFormControls['email_address'].value,
             phone_number: this.registrationFormControls['phone_number'].value,
-            gender: this.registrationFormControls['gender'].value,
+            gender: gender.toUpperCase(),
             category_uid: this.registrationFormControls['category_uid'].value,
         };
-        this.appLoadingService.startLoading('Login...');
+        this.appLoadingService.startLoading('Signup . . .');
         this.registrationEndpoint.signup(formData).subscribe({
             next: () => {
                 this.appNotificationService.showSuccess({

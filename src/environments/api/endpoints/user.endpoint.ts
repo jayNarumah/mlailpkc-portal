@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserResource } from 'src/app/main/auth/auth.model';
+import { UserResource } from 'src/api/resources/user.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class UserEndpoint {
-  baseUrl = `${environment.apiUrl}/admin`;
+    baseUrl = `${environment.apiUrl}/admin`;
 
-  constructor(private readonly httpClient: HttpClient) {}
+    constructor(private readonly httpClient: HttpClient) { }
 
-  list() {
-    return this.httpClient.get<UserResource[]>(`${this.baseUrl}/users`);
-  }
+    list() {
+        return this.httpClient.get<UserResource[]>(`${this.baseUrl}/users`);
+    }
 
-  toggleStatus(id: number) {
-    return this.httpClient.get<UserResource>(`${this.baseUrl}/user/toggle/${id}`);
-  }
+    toggleStatus(id: number) {
+        return this.httpClient.get<UserResource>(`${this.baseUrl}/user/toggle/${id}`);
+    }
 }

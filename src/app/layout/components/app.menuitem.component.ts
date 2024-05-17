@@ -23,7 +23,8 @@ import { AppMenuService } from '../service/app-menu.service';
                [fragment]="item.fragment" [queryParamsHandling]="item.queryParamsHandling" [preserveFragment]="item.preserveFragment"
                [skipLocationChange]="item.skipLocationChange" [replaceUrl]="item.replaceUrl" [state]="item.state" [queryParams]="item.queryParams"
                [attr.target]="item.target" tabindex="0" pRipple>
-				<i [ngClass]="item.icon" class="layout-menuitem-icon"></i>
+				<span [ngClass]="item.padding" class=""><img [src]="item.icon" class="layout-menuitem-icon img-fit white-icon"
+                [height]="item.height" alt="{{ item.label }}" /></span>
 				<span class="layout-menuitem-text">{{item.label}}</span>
 				<i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="item.items"></i>
 			</a>

@@ -129,8 +129,9 @@
                         </div>
                         <div class="field">
                             <label for="category_uid" class="block text-900 font-medium mb-2">Student Category</label>
-                            <p-dropdown [options]="studentCategories" formControlName="category_uid" optionLabel="name"
-                                optionValue="uid" class="w-full mb-3" placeholder="Select Student Category" [class]="
+                            <p-dropdown [options]="studentCategories" [filter]="true" filterBy="name"
+                                formControlName="category_uid" optionLabel="name" optionValue="uid" class="w-full mb-3"
+                                placeholder="Select Student Category" [class]="
                             registrationFormControls['category_uid'].invalid &&
                             registrationFormControls['category_uid'].touched ? 'ng-dirty ng-invalid' : '' " />
                             <div *ngIf="registrationFormControls['category_uid'].invalid &&

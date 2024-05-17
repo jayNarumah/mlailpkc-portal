@@ -59,10 +59,10 @@ export class LoginPageComponent implements OnInit {
             password: this.loginForm.value.password ?? '',
         };
         this.loading = true;
-        this.appLoadingService.startLoading('Login...');
+        this.appLoadingService.startLoading('Login . . .');
         this.authEndpoint.login(formData).subscribe({
             next: (response) => {
-                this.appLoadingService.startLoading('Loading...');
+                this.appLoadingService.stopLoading();
                 // Set logged-in state
                 this.appStore.dispatch(
                     AppAuthActions.login({
@@ -71,7 +71,7 @@ export class LoginPageComponent implements OnInit {
                     })
                 );
 
-                this.router.navigate(['/']);
+                this.router.navigate(['/modules']);
                 // Show toast
                 this.appNotificationService.showSuccess({
                     title: 'Login Successful!',

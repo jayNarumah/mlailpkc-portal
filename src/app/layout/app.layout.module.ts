@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +21,7 @@ import { ChipModule } from 'primeng/chip';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -33,10 +33,9 @@ import { ButtonModule } from 'primeng/button';
         AppLayoutComponent,
     ],
     imports: [
-        BrowserModule,
+        CommonModule,
         FormsModule,
         HttpClientModule,
-        BrowserAnimationsModule,
         InputTextModule,
         MenuModule,
         SidebarModule,

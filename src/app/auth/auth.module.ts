@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { UiModule } from "../ui/ui.module";
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { HeaderPageComponent } from '../pages/landing/header-page/header-page.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,7 @@ const routes: Routes = [
         ReactiveFormsModule,
         UiModule,
         CommonModule,
+        HeaderPageComponent,
     ],
     declarations: [
         AuthLayoutComponent,
