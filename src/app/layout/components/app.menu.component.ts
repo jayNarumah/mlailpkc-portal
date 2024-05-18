@@ -18,7 +18,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Home',
                 items: [
                     {
-                        label: 'Dashboard', icon: 'assets/images/icons/dashboard.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/']
+                        label: 'Dashboard', icon: 'assets/images/icons/dashboard.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules']
                     }
                 ]
             },

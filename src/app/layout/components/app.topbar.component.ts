@@ -83,7 +83,7 @@ export class AppTopBarComponent {
 
     logout() {
         this.appStore.dispatch(AppAuthActions.logout())
-        this.router.navigate(['/auth/budgeting/login']);
+        this.router.navigate(['/auth/login']);
     }
 
 
@@ -92,6 +92,6 @@ export class AppTopBarComponent {
     }
 
     goToProfile() {
-        this.router.navigate([`/`]);
+        this.router.navigate([`/modules/profile`]);
     }
 }

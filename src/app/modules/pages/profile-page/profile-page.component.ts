@@ -43,7 +43,7 @@ export class ProfilePageComponent implements OnInit {
     msgs: Message[] = [];
     tab = 0;
 
-    genders = [];
+    genders = ['Female', 'Male'];
     uploadedProfileImage: string | ArrayBuffer | null = null;
     profilePhotoFile?: string;
 
@@ -91,7 +91,6 @@ export class ProfilePageComponent implements OnInit {
         private readonly appLoadingService: AppLoadingService,
         private readonly appNotificationService: AppNotificationService,
         private readonly confirmationService: ConfirmationService,
-        private readonly budgetingUserEndpoint: UserEndpoint,
         private readonly messageService: MessageService,
         private readonly fb: FormBuilder,
         private readonly router: Router,
@@ -109,11 +108,6 @@ export class ProfilePageComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.breadcrumbItems = [];
-        this.breadcrumbItems.push({ label: 'Dashboard', routerLink: ['/module/dashboard/main'] });
-        this.breadcrumbItems.push({ label: 'List of Users', routerLink: ['/module/user/users/list'] });
-        this.breadcrumbItems.push({ label: 'User Details' });
-        this.primengConfig.ripple = true;
         // this.route.data
         //   .subscribe({
         //     next: (data) => {
@@ -130,35 +124,6 @@ export class ProfilePageComponent implements OnInit {
         //     },
         //   });
 
-        this.activatedRoute.params.subscribe({
-            next: (params) => {
-                this.appLoadingService.startLoading('Loading Data...');
-                this.uid = params['uid']
-                // this.budgetingUserEndpoint.findByUid(this.uid).subscribe({
-                //     next: (data) => {
-                //         this.user = data;
-                //         if (data.is_active) {
-                //             this.status = 'Deactivate';
-                //         } else {
-                //             this.status = 'Activate';
-                //         };
-                //         this.uploadedProfileImage = data.profilePhoto?.imageUrl ?? '';
-                //         this.appLoadingService.stopLoading();
-
-                //         // Check Permissions
-                //         // this._checkPermissions();
-                //     },
-                //     error: (error) => {
-                //         this.appLoadingService.stopLoading();
-                //         this.appNotificationService.showError({ title: error.error, detail: error.message });
-                //     }
-
-                // })
-            },
-            error: (error) => {
-                this.appNotificationService.showError({ title: error.error, detail: error.message });
-            }
-        });
 
 
 
@@ -183,12 +148,6 @@ export class ProfilePageComponent implements OnInit {
         this.userWorkForm.statusChanges.subscribe({
             next: (status) => {
                 this.canSubmitWork = status === 'VALID' && this.userWorkForm.valid
-            }
-        });
-
-        this.userProfileForm.controls['skills'].statusChanges.subscribe({
-            next: (status) => {
-                this.canAddSkill = status === 'VALID'
             }
         });
 
