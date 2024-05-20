@@ -1,0 +1,34 @@
+GET https://mlailpkc-api-839a553f0085.herokuapp.com/api/logs
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|IcBpjJLjV9WQ5ECopEkbyMFwEdTEmPn3gD3c8Bm9
+
+###
+POST https://mlailpkc-api-839a553f0085.herokuapp.com/api/admin/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "admin@mlailpkc.mil.ng",
+    "password": "admin@321"
+}
+
+###
+GET https://mlailpkc-api-839a553f0085.herokuapp.com/api/student/registration/verify-email/4a3fcefa-8479-4673-b7e2-a8c4a20cfb6a/jawadrumah@gmail.com
+Accept: application/json
+###
+GET https://mlailpkc-api-839a553f0085.herokuapp.com/api/admin/student-registrations/list
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJqd3QtYXVkaWVuY2UiLCJpc3MiOiJtbGFpbHBrYy5taWwubmciLCJVU0VSX1VJRCI6IjdhYjhmNDIyLWU0NDUtNGU5OC05NmRkLWM0OWJjNzM2ZjBjZSIsIlVTRVJfUEVSTUlTU0lPTlMiOltdLCJleHAiOjE3MTYyMzQzMTh9.Ym8Cu2t937l1_DECCH565NIEp6_AHjM6SsANLjse2UI
+
+###
+POST https://mlailpkc-api-839a553f0085.herokuapp.com/api/admin/student-registrations/process/87a7c4a7-bb2e-4af0-893b-6f6ad561e04d
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJqd3QtYXVkaWVuY2UiLCJpc3MiOiJtbGFpbHBrYy5taWwubmciLCJVU0VSX1VJRCI6IjdhYjhmNDIyLWU0NDUtNGU5OC05NmRkLWM0OWJjNzM2ZjBjZSIsIlVTRVJfUEVSTUlTU0lPTlMiOltdLCJleHAiOjE3MTYyMzQzMTh9.Ym8Cu2t937l1_DECCH565NIEp6_AHjM6SsANLjse2UI
+
+{
+    "action": "APPROVED"
+}
+

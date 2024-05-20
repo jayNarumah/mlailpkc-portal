@@ -33,6 +33,5 @@ const routes: Routes = [
         LoginPageComponent,
         RegistrationPageComponent
     ],
-    // providers: [...httpInterceptorProviders]
 })
 export class AuthModule { }

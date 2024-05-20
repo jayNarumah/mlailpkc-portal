@@ -10,7 +10,7 @@ export interface AuthLoginResponseDto {
 
 export interface AuthLoggedInUserDto {
     uid: string;
-    full_nane: string;
+    full_name: string;
     permissions: string[];
 }
 
@@ -19,5 +19,6 @@ export class ForgotPasswordDto {
 }
 
 export class UpdatePasswordDto {
-    password!: string;
+    old_password!: string;
+    new_password!: string;
 }

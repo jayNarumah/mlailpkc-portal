@@ -6,7 +6,7 @@
 <div
     class="surface-card flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden roboto-font">
     <div class="grid justify-content-center p-2 lg:p-0" style="min-width: 60%" *ngIf="login">
-        <div class="surface-card w-full lg:w-5 pt-8">
+        <div class="surface-card w-full lg:w-5">
             <div class="text-left mb-5">
                 <label for="password1" class="block text-900 font-medium">Welcome back</label>
                 <div class="text-900 text-4xl font-medium">
@@ -42,78 +42,6 @@
 
                     <button (click)="doLogin()" pButton pRipple label="Login now"
                         class="w-full mb-3 green-white-btn p-button-primary"></button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- reset password form -->
-    <div class="grid justify-content-center p-2 lg:p-0" style="min-width: 60%" *ngIf="must_change_password">
-        <div class="surface-card w-full lg:w-6 pt-8">
-            <div class="text-left mb-5">
-                <!-- <label for="password1" class="block text-900 font-medium">Login to your account</label> -->
-                <div class="text-900 text-4xl font-medium">
-                    <span class="black-font"><strong>Reset Password</strong></span>
-                </div>
-
-                <!-- <div *ngIf="declined" class="alert alert-danger" role="alert">
-          <p-messages [(value)]="msg" [enableService]="false"></p-messages>
-        </div> -->
-            </div>
-
-
-            <form class="" [formGroup]="passwordForm">
-                <div>
-                    <label for="password" class="block text-900 font-medium mb-2">Password</label>
-                    <input id="password" formControlName="password" placeholder="Password" type="password" pInputText
-                        class="w-full mb-3" />
-
-                    <div *ngIf="
-              passwordForm.controls['password'].invalid &&
-              passwordForm.controls['password'].touched
-            " class="p-error block">
-                        <small id="password" class="p-error block"
-                            *ngIf="passwordForm.controls['password'].errors?.['required']">
-                            This field is required
-                        </small>
-                        <small id="password" class="p-error block"
-                            *ngIf="passwordForm.controls['password'].errors?.['minlength']">
-                            Must be at least 8 characters
-                        </small>
-                    </div>
-
-                    <label for="confirmPassword" class="block text-900 font-medium mb-2">confirm Password</label>
-                    <input id="confirmPassword" placeholder="confirmPassword" formControlName="confirmPassword"
-                        type="password" pInputText class="w-full mb-3" />
-                    <div *ngIf="
-              passwordForm.controls['confirmPassword'].invalid &&
-              passwordForm.controls['confirmPassword'].touched
-            " class="p-error block">
-                        <small id="confirmPassword" class="p-error block"
-                            *ngIf="passwordForm.controls['confirmPassword'].errors?.['required']">
-                            This field is required
-                        </small>
-                        <small id="confirmPassword" class="p-error block"
-                            *ngIf="passwordForm.controls['confirmPassword'].errors?.['minlength']">
-                            Must be at least 8 characters
-                        </small>
-                        <small id="confirmPassword" class="p-error block"
-                            *ngIf="passwordForm.controls['confirmPassword'].errors?.['mustMatch']">
-                            Password Must match
-                        </small>
-                    </div>
-
-                    <!-- <div class="flex align-items-center justify-content-between mb-6">
-            <div class="flex align-items-center">
-              <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-              <label for="rememberme1" class="text-900">Remember me</label>
-            </div>
-            <a class="font-medium no-underline ml-2 grey-font text-right cursor-pointer"><strong>Forgot
-                password?</strong></a>
-          </div> -->
-
-                    <button (click)="updatePassword()" [disabled]="!reset" pButton pRipple label="update Password"
-                        class="w-full mb-3 green-white-btn p-button-success"></button>
                 </div>
             </form>
         </div>

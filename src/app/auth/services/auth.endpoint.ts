@@ -12,8 +12,8 @@ export class AuthEndpoint {
 
     constructor(private readonly httpClient: HttpClient) { }
 
-    login(payload: AuthLoginRequestDto): Observable<AuthLoginResponseDto> {
-        return this.httpClient.post<AuthLoginResponseDto>(`${this.baseUrl}/login`, payload);
+    login(payload: AuthLoginRequestDto): Observable<{ data: AuthLoginResponseDto }> {
+        return this.httpClient.post<{ data: AuthLoginResponseDto }>(`${this.baseUrl}/login`, payload);
     }
 
     updatePassword(payload: UpdatePasswordDto) {

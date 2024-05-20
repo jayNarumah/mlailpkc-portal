@@ -6,7 +6,7 @@ import { PagesRoutingModule } from "./pages-routing.module";
 import { ProfilePageComponent } from "../modules/pages/profile-page/profile-page.component";
 
 @NgModule({
-    declarations: [NotfoundComponent, ProfilePageComponent],
+    declarations: [NotfoundComponent],
     imports: [CommonModule, UiModule, PagesRoutingModule]
 })
 

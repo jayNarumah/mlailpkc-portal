@@ -83,13 +83,14 @@ export class RegistrationPageComponent implements OnInit {
                 this.appLoadingService.stopLoading();
             },
             error: (error) => {
-                const apiError = error || 'Server Error !';
-                this.declined = true;
                 this.appLoadingService.stopLoading();
-                this.msg = apiError;
+                this.msg = error;
+                console.log(this.msg);
+
+                this.declined = true;
                 this.appNotificationService.showError({
                     title: 'Oops !',
-                    detail: error || 'Server Error !',
+                    detail: error,
                 });
             },
         });

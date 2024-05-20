@@ -4,28 +4,25 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  isLoggedIn = false;
+    isLoggedIn = false;
 
-  constructor(
-    private readonly authService: AuthService,
-    private readonly router: Router
-  ) {
-    this.authService.isLoggedIn$
-      .subscribe({
-        next: (isLoggedIn) => {
-          this.isLoggedIn = isLoggedIn;
-        },
-      });
-  }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if (!this.isLoggedIn) {
-      return this.router.navigate(['/auth/login']);
+    constructor(
+        private readonly authService: AuthService,
+        private readonly router: Router
+    ) {
+        this.isLoggedIn = this.authService.isLoggedIn;
     }
 
-    return true;
-  }
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+        console.log('Guard', this.isLoggedIn);
+
+        if (!this.isLoggedIn) {
+            return this.router.navigate(['/auth/login']);
+        }
+
+        return true;
+    }
 }

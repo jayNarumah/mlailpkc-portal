@@ -53,6 +53,7 @@ export const appAuthReducer = createReducer<AppAuthState>(
     on(AppAuthActions.login, (state, props) => {
         setAccessTokenToLocalStorage(props.access_token);
         setUserToLocalStorage(props.user);
+
         return {
             access_token: props.access_token,
             user: props.user,
@@ -64,6 +65,16 @@ export const appAuthReducer = createReducer<AppAuthState>(
         return {
             access_token: null,
             user: null,
+        };
+    }),
+    on(AppAuthActions.update, (state, props) => {
+
+        const user = { ...state.user, phone_number: props.phone_number }
+        setUserToLocalStorage(user);
+
+        return {
+            ...state,
+            phone_number: props.phone_number,
         };
     })
 );

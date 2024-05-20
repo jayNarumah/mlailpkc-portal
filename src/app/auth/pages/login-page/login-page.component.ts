@@ -24,14 +24,12 @@ export class LoginPageComponent implements OnInit {
     errorMessage = '';
     successMessage = '';
     loginForm = this._getLoginFormDef();
-    passwordForm = this._getUpdatePasswordFormDef();
-    declined = false;
     msg: Message[] = [];
-    must_change_password = false;
     reset = false;
     visible = false;
     message?: ReportModel;
     complete = false;
+    declined = false;
     login = true;
 
     constructor(
@@ -45,12 +43,6 @@ export class LoginPageComponent implements OnInit {
 
     ngOnInit(): void {
         this.logout();
-
-        this.passwordForm.statusChanges.subscribe({
-            next: (status) => {
-                this.reset = status === 'VALID';
-            },
-        });
     }
 
     doLogin() {
@@ -66,26 +58,28 @@ export class LoginPageComponent implements OnInit {
                 // Set logged-in state
                 this.appStore.dispatch(
                     AppAuthActions.login({
-                        access_token: response.access_token,
-                        user: response.user,
+                        access_token: response.data.access_token,
+                        user: response.data.user,
                     })
                 );
 
-                this.router.navigate(['/modules']);
                 // Show toast
                 this.appNotificationService.showSuccess({
                     title: 'Login Successful!',
-                    detail: `Welcome back, ${response.user.full_nane}`,
+                    detail: `Welcome back, ${response.data.user.full_name}`,
                 });
                 this.loading = false;
-                this.declined = false;
                 this.appLoadingService.stopLoading();
+                setTimeout(() => {
+                    this.router.navigate(['/modules']);
+                }, 2000);
+
             },
-            error: (error: ApiError) => {
+            error: (error) => {
                 const apiError = error;
                 this.appLoadingService.stopLoading();
 
-                this._setErrorMessage(apiError.message);
+                this._setErrorMessage(apiError);
                 this.declined = true;
             },
         });
@@ -112,77 +106,6 @@ export class LoginPageComponent implements OnInit {
             },
         ];
     }
-
-    private _getUpdatePasswordFormDef() {
-        return this.fb.group(
-            {
-                password: this.fb.control<string>('', [
-                    Validators.required,
-                    Validators.minLength(8),
-                ]),
-                confirmPassword: this.fb.control<string>('', [
-                    Validators.required,
-                    Validators.minLength(8),
-                ]),
-            }
-            // { validator: MustMatch('password', 'confirmPassword') }
-        );
-    }
-
-    updatePassword() {
-        const formData = {
-            password: this.passwordForm.value.password ?? '',
-            must_change_password: false,
-        };
-
-        this.loading = true;
-        this.appLoadingService.startLoading('update...');
-        this.authEndpoint.updatePassword(formData).subscribe({
-            next: (response) => {
-                this.appStore.dispatch(AppAuthActions.logout());
-                this.appLoadingService.stopLoading();
-                this.loading = false;
-                this.must_change_password = false;
-                this.loginForm.reset();
-                const report: ReportModel = {
-                    status: true,
-                    message: 'Your password has been reset successfully',
-                };
-                this.message = report;
-                this.complete = true;
-            },
-            error: (err) => {
-                this.loading = false;
-                this.complete = true;
-                this.must_change_password = false;
-                this.appLoadingService.stopLoading();
-                this.appNotificationService.showError({
-                    title: err.statusText,
-                    detail: err.error.message,
-                });
-                this._setErrorMessage(err.error);
-                const report: ReportModel = {
-                    status: false,
-                    message: 'Password reset failed',
-                };
-                this.message = report;
-            },
-        });
-    }
-
-    continue() {
-        this.login = true;
-        this.complete = false;
-        this.must_change_password = false;
-    }
-
-    // showDialog(report: ReportModel) {
-    //     this.message = report;
-    //     this.visible = true;
-    //     setTimeout(() => {
-    //         this.visible = false;
-    //     }, 3000);
-    // }
 
     logout() {
         this.appStore.dispatch(AppAuthActions.logout());

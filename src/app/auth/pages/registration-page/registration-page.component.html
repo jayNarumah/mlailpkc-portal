@@ -59,10 +59,11 @@
                     </div>
                     <span class="black-font">Please create an account here</span>
 
-
-                    <div *ngIf="declined" class="alert alert-danger" role="alert">
+                    @if (declined) {
+                    <div class="alert alert-danger" role="alert">
                         <p-messages [(value)]="msg" [enableService]="false"></p-messages>
                     </div>
+                    }
                 </div>
 
 
