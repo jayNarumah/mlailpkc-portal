@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import {
     SignupRequestDto,
     SignupResponseDto,
-} from '../models/api/registration.model';
+} from '../../models/api/registration.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

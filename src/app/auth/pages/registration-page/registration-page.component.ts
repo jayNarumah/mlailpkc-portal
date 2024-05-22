@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/api';
-import { RegistrationEndpoint } from 'src/api/endpoints/registration.endpoint';
+import { RegistrationEndpoint } from 'src/api/endpoints/auth/registration.endpoint';
 import { StudentCategoryEndpoint } from 'src/api/endpoints/student-category.endpoint';
 import { Gender } from 'src/api/enums/gender.enum';
 import { ApiError } from 'src/api/models/api-interfaces';

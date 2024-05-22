@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ConfirmationService, MenuItem, Message, MessageService, PrimeNGConfig } from 'primeng/api';
 import { FileUpload } from 'primeng/fileupload';
-import { ProfileEndpoint } from 'src/api/endpoints/profile.endpoint';
+import { ProfileEndpoint } from 'src/api/endpoints/auth/profile.endpoint';
 import { StudentCategoryEndpoint } from 'src/api/endpoints/student-category.endpoint';
 import { MustMatch } from 'src/api/helpers/must-match.validator';
 import { UpdatePasswordDto } from 'src/api/models/auth.request';

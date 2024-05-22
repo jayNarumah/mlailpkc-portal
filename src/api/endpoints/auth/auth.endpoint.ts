@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import {
     AuthLoginRequestDto,
     AuthLoginResponseDto,
-} from '../models/auth.request';
+} from '../../models/auth.request';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class AuthEndpoint {
     parentUri = '/auth';
 
-    constructor(private readonly httpClient: HttpClient) {}
+    constructor(private readonly httpClient: HttpClient) { }
 
     login(data: AuthLoginRequestDto): Observable<AuthLoginResponseDto> {
         return this.httpClient.post<AuthLoginResponseDto>(

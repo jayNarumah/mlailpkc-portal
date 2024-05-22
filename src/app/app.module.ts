@@ -39,7 +39,7 @@ import { environment } from 'src/environments/environment';
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-        ProductService
+        ProductService,
     ],
     bootstrap: [AppComponent],
 })
