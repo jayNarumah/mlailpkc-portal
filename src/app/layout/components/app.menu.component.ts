@@ -25,7 +25,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'UI Components',
                 items: [
-                    { label: 'Form Layout', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/uikit/formlayout'] },
+                    { label: 'Courses', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'] },
                     // { label: 'Input', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/uikit/input'] },
                     // { label: 'Float Label', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/uikit/floatlabel'] },
                     // { label: 'Invalid State', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/uikit/invalidstate'] },

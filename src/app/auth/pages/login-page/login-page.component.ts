@@ -42,7 +42,6 @@ export class LoginPageComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.logout();
     }
 
     doLogin() {

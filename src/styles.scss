@@ -53,3 +53,13 @@ $gutter: 1rem; //for primeflex grid system
 .light-blue-bg {
     background-color: #598BAF !important;
 }
+
+.gradient-background {
+    background-color: #183B59;
+    border: 5px solid #598BAF;
+    color: #24b1ed;
+    background-position: center;
+    /* Gradient starts at the center */
+    animation: animateGradient 10s ease-in-out infinite;
+    /* Example animation */
+}

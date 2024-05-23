@@ -11,6 +11,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
                 children: [
                     { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
                     { path: 'profile', component: ProfilePageComponent },
+                    { path: 'course-schedule', loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule) },
                 ]
             },
         ],)

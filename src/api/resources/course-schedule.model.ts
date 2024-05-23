@@ -11,7 +11,7 @@ export interface CourseScheduleResource {
     enabled: boolean
     created_at: Date;
     last_modified_at: Date;
-    sessions: SessionResource,
+    sessions: SessionResource[],
     start_date: Date;
     end_date: Date
     course_uid: string;

@@ -48,6 +48,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { AvatarModule } from 'primeng/avatar';
 import { CarouselModule } from 'primeng/carousel';
 import { RatingModule } from 'primeng/rating';
+import { SkeletonModule } from 'primeng/skeleton';
 
 export const PRIMENG_IMPORTS = [
     CarouselModule,
@@ -56,6 +57,7 @@ export const PRIMENG_IMPORTS = [
     ButtonModule,
     PasswordModule,
     SelectButtonModule,
+    SkeletonModule,
     InputTextModule,
     InputTextareaModule,
     CheckboxModule,
