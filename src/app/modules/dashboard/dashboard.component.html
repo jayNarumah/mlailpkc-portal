@@ -1,19 +1,13 @@
 <div class="grid">
     <div class="col-12 lg:col-6 xl:col-3">
         <div class="card dark-card p-4">
-            <div
-                class="flex justify-content-between align-items-center content"
-            >
-                <div
-                    class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
-                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }"
-                >
-                    <i class="pi pi-shopping-cart text-blue-800 text-5xl"></i>
+            <div class="flex justify-content-between align-items-center content">
+                <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
+                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
+                    <i class="pi pi-warehouse text-blue-800 text-5xl"></i>
                 </div>
                 <div>
-                    <span class="block text-500 font-medium mb-3"
-                        >Available Courses</span
-                    >
+                    <span class="block text-500 font-medium mb-3">Available Courses</span>
                     <div class="text-1000 font-bold text-5xl">
                         {{ dashboardStats?.courses_count ?? 0 }}
                     </div>
@@ -26,16 +20,12 @@
     <div class="col-12 lg:col-6 xl:col-3">
         <div class="card shadow-2 p-4">
             <div class="flex justify-content-between align-items-center">
-                <div
-                    class="flex align-items-center justify-content-center bg-blue-100 border-round"
-                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }"
-                >
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
                     <i class="pi pi-shopping-cart text-blue-800 text-5xl"></i>
                 </div>
                 <div>
-                    <span class="block text-500 font-medium mb-3"
-                        >My Courses</span
-                    >
+                    <span class="block text-500 font-medium mb-3">My Courses</span>
                     <div class="text-1000 font-bold text-5xl">
                         {{ dashboardStats?.course_subscriptions_count ?? 0 }}
                     </div>
@@ -47,19 +37,13 @@
     </div>
     <div class="col-12 lg:col-6 xl:col-3">
         <div class="card dark-card gradient-background p-4">
-            <div
-                class="flex justify-content-between align-items-center content"
-            >
-                <div
-                    class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
-                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }"
-                >
-                    <i class="pi pi-shopping-cart text-blue-800 text-5xl"></i>
+            <div class="flex justify-content-between align-items-center content">
+                <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
+                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
+                    <i class="pi pi-envelope text-blue-800 text-5xl"></i>
                 </div>
                 <div>
-                    <span class="block text-500 font-medium mb-3"
-                        >Messages</span
-                    >
+                    <span class="block text-500 font-medium mb-3">Messages</span>
                     <div class="text-1000 font-bold text-5xl">{{ 0 }}</div>
                 </div>
             </div>
@@ -70,16 +54,12 @@
     <div class="col-12 lg:col-6 xl:col-3">
         <div class="card shadow-2 p-4">
             <div class="flex justify-content-between align-items-center">
-                <div
-                    class="flex align-items-center justify-content-center bg-blue-100 border-round"
-                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }"
-                >
-                    <i class="pi pi-shopping-cart text-blue-800 text-5xl"></i>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
+                    <i class="pi pi-bell text-blue-800 text-5xl"></i>
                 </div>
                 <div>
-                    <span class="block text-500 font-medium mb-3"
-                        >Notifications</span
-                    >
+                    <span class="block text-500 font-medium mb-3">Notifications</span>
                     <div class="text-1000 font-bold text-5xl">{{ 0 }}</div>
                 </div>
             </div>
@@ -139,12 +119,7 @@
     <div class="col-12 xl:col-6">
         <div class="card">
             <h5>Recent Courses</h5>
-            <p-table
-                [value]="dashboardStats?.latestCourses"
-                [paginator]="true"
-                [rows]="5"
-                responsiveLayout="scroll"
-            >
+            <p-table [value]="dashboardStats?.latestCourses" [paginator]="true" [rows]="5" responsiveLayout="scroll">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Image</th>
@@ -153,15 +128,11 @@
                         </th>
                         <th pSortableColumn="course_session_start_date">
                             Start Date
-                            <p-sortIcon
-                                field="course_session_start_date"
-                            ></p-sortIcon>
+                            <p-sortIcon field="course_session_start_date"></p-sortIcon>
                         </th>
                         <th pSortableColumn="course_session_start_date">
                             End Date
-                            <p-sortIcon
-                                field="course_session_start_date"
-                            ></p-sortIcon>
+                            <p-sortIcon field="course_session_start_date"></p-sortIcon>
                         </th>
                         <th>View</th>
                     </tr>
@@ -169,14 +140,9 @@
                 <ng-template pTemplate="body" let-course>
                     <tr>
                         <td style="width: 15%; min-width: 5rem">
-                            <img
-                                src="assets/demo/images/product/{{
+                            <img src="assets/demo/images/product/{{
                                     'headphones.jpg'
-                                }}"
-                                class="shadow-4"
-                                alt="{{ course.course_name }}"
-                                width="50"
-                            />
+                                }}" class="shadow-4" alt="{{ course.course_name }}" width="50" />
                         </td>
                         <td style="width: 40%; min-width: 7rem">
                             {{ course.course_name }}
@@ -188,13 +154,8 @@
                             {{ course.course_session_end_date }}
                         </td>
                         <td style="width: 15%">
-                            <button
-                                pButton
-                                pRipple
-                                type="button"
-                                icon="pi pi-search"
-                                class="p-button p-component p-button-text p-button-icon-only"
-                            ></button>
+                            <button pButton pRipple type="button" icon="pi pi-eye"
+                                class="p-button p-component p-button-text p-button-icon-only"></button>
                         </td>
                     </tr>
                 </ng-template>
@@ -379,32 +340,21 @@
             <div class="flex align-items-center justify-content-between mb-4">
                 <h5>Notifications</h5>
                 <div>
-                    <button
-                        pButton
-                        type="button"
-                        icon="pi pi-ellipsis-v"
-                        class="p-button-rounded p-button-text p-button-plain"
-                        (click)="menu.toggle($event)"
-                    ></button>
+                    <button pButton type="button" icon="pi pi-ellipsis-v"
+                        class="p-button-rounded p-button-text p-button-plain" (click)="menu.toggle($event)"></button>
                     <p-menu #menu [popup]="true" [model]="items"></p-menu>
                 </div>
             </div>
 
-            <span class="block text-600 font-medium mb-3"
-                >Recent Activities</span
-            >
+            <span class="block text-600 font-medium mb-3">Recent Activities</span>
             <ul class="p-0 mx-0 mt-0 mb-4 list-none">
-                <li
-                    *ngFor="let notification of recentNotifications"
-                    class="flex align-items-center py-2 border-bottom-1 surface-border"
-                >
+                <li *ngFor="let notification of recentNotifications"
+                    class="flex align-items-center py-2 border-bottom-1 surface-border">
                     <div
-                        class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0"
-                    >
-                        <i class="pi pi-dollar text-xl text-blue-500"></i>
+                        class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
+                        <i class="pi pi-bell text-xl text-blue-500"></i>
                     </div>
-                    <span class="text-900 line-height-3"
-                        >[Course Update]
+                    <span class="text-900 line-height-3">[Course Update]
                         <span class="text-700">{{ " " + notification }}</span>
                     </span>
                 </li>
