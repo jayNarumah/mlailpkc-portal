@@ -54,12 +54,35 @@ $gutter: 1rem; //for primeflex grid system
     background-color: #598BAF !important;
 }
 
+// .gradient-background {
+//     background-color: #183B59;
+//     border: 2ypx solid #598BAF;
+//     color: #24b1ed;
+//     background-position: center;
+/* Gradient starts at the center */
+// animation: animateGradient 10s ease-in-out infinite;
+/* Example animation */
+// }
+
 .gradient-background {
-    background-color: #183B59;
-    border: 5px solid #598BAF;
-    color: #24b1ed;
+    background-image: linear-gradient(to bottom right, #083A50, #17485d, #37645d);
+    /* Three blue shades */
     background-position: center;
     /* Gradient starts at the center */
     animation: animateGradient 10s ease-in-out infinite;
     /* Example animation */
+}
+
+@keyframes animateGradient {
+    0% {
+        background-position: center;
+    }
+
+    50% {
+        background-position: right;
+    }
+
+    100% {
+        background-position: center;
+    }
 }
