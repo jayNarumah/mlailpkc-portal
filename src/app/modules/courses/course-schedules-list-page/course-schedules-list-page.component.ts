@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { UiModule } from 'src/app/ui/ui.module';
 import { HeaderPageComponent } from '../../../pages/landing/header-page/header-page.component';
 import { SharedModule } from 'src/app/shared.module';
@@ -25,7 +25,7 @@ export class CourseSchedulesListPageComponent {
     filterChoice = '';
     courseCategories = ['Online', 'In-Online'];
     courses: CourseScheduleResource[] = [];
-    is_loading = true;
+    is_loading = signal(true);
 
     responsiveOptions: any[];
 
@@ -37,16 +37,17 @@ export class CourseSchedulesListPageComponent {
     ) { }
 
     ngOnInit() {
-        this.appLoadingService.startLoading('fetching . . .');
+        // this.appLoadingService.startLoading('fetching . . .');
         this.courseScheduleEndpoint.list().subscribe({
             next: (response) => {
                 this.courses = response.data;
-                this.is_loading = false;
-                this.appLoadingService.stopLoading();
+                this.is_loading.set(false);
+                // this.appLoadingService.stopLoading();
             },
             error: (err) => {
                 console.log(err);
-                this.appLoadingService.stopLoading();
+                this.is_loading.set(false);
+                // this.appLoadingService.stopLoading();
 
             }
         });

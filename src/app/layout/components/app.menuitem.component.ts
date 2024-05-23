@@ -31,7 +31,7 @@ import { AppMenuService } from '../service/app-menu.service';
 
 			<ul *ngIf="item.items && item.visible !== false" [@children]="submenuAnimation">
 				<ng-template ngFor let-child let-i="index" [ngForOf]="item.items">
-					<li app-menuitem [item]="child" [index]="i" [parentKey]="key" [class]="child.badgeClass"></li>
+					<li app-menuitem [item]="child" [index]="i" [parentKey]="key" [class]="child.badgeClass" stu></li>
 				</ng-template>
 			</ul>
 		</ng-container>
