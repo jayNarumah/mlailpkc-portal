@@ -74,7 +74,11 @@
 
             &.active-route {
                 font-weight: 700;
-                color: var(--primary-color);
+                background-image: linear-gradient(to bottom right, #16222e, #3a6073);
+                background-position: center;
+                color: #fff;
+                width: 200px;
+                // color: var(--primary-color);
             }
 
             &:hover {
