@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UiModule } from 'src/app/ui/ui.module';
 import { HeaderPageComponent } from '../../../pages/landing/header-page/header-page.component';
@@ -19,6 +19,7 @@ import { SessionResource } from 'src/api/resources/session.model';
 })
 export class CourseScheduleDetailsPageComponent implements OnInit {
     rating = 4;
+    is_loading = signal<boolean>(true);
     dialogPosition = 'center';
     course: CourseScheduleResource;
     constructor(
@@ -34,10 +35,10 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
             .subscribe({
                 next: (response: { data: CourseScheduleResource }) => {
                     this.course = response.data;
-                    console.log(this.course);
-
+                    this.is_loading.set(false);
                 },
                 error: (err) => {
+                    this.is_loading.set(false);
                 }
             });
     }
@@ -86,5 +87,9 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
                 // this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
             }
         });
+    }
+
+    goBack() {
+        window.history.back();
     }
 }
