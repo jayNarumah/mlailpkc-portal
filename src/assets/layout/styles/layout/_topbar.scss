@@ -80,6 +80,37 @@
         list-style: none;
         display: flex;
 
+        .p-link {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: var(--text-color-secondary);
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            transition: background-color $transitionDuration;
+
+            &:hover {
+                border-radius: 50%;
+                color: var(--text-color);
+                background-color: var(--surface-hover);
+            }
+
+        }
+
+        span {
+            padding: 10px;
+
+            &:hover {
+                border-radius: 50%;
+                color: var(--text-color);
+                background-color: var(--surface-hover);
+            }
+
+        }
+
         .layout-topbar-button {
             margin-left: 1rem;
         }

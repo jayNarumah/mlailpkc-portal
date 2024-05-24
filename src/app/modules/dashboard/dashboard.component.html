@@ -1,5 +1,21 @@
 <div class="grid">
     <div class="col-12 lg:col-6 xl:col-3">
+        <div class="card dark-card gradient-background p-4">
+            <div class="flex justify-content-between align-items-center content">
+                <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section mr-3"
+                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
+                    <i class="pi pi-database text-blue-800 text-5xl"></i>
+                </div>
+                <div>
+                    <span class="block text-500 font-medium mb-3">Available Courses</span>
+                    <div class="text-1000 font-bold text-5xl">{{ dashboardStats?.courses_count ?? 0 }}</div>
+                </div>
+            </div>
+            <!-- <span class="text-green-500 font-medium">24 new </span>
+                <span class="text-500">since last visit</span> -->
+        </div>
+    </div>
+    <!-- <div class="col-12 lg:col-6 xl:col-3">
         <div class="card dark-card p-4">
             <div class="flex justify-content-between align-items-center content">
                 <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
@@ -13,10 +29,8 @@
                     </div>
                 </div>
             </div>
-            <!-- <span class="text-green-500 font-medium">24 new </span>
-                <span class="text-500">since last visit</span> -->
         </div>
-    </div>
+    </div> -->
     <div class="col-12 lg:col-6 xl:col-3">
         <div class="card shadow-2 p-4">
             <div class="flex justify-content-between align-items-center">

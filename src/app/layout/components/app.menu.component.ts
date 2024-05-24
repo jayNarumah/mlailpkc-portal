@@ -23,11 +23,11 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'UI Components',
+                label: 'Courses',
                 items: [
-                    // { label: 'Courses', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'] },
+                    // { label: 'Sample', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'] },
                     {
-                        label: 'Courses', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'],
+                        label: 'Courses', icon: 'assets/images/icons/layers-2.png', height: '25', class: 'no-background', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'],
                         items: [
                             {
                                 label: 'List', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'],
