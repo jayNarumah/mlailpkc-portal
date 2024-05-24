@@ -9,15 +9,17 @@ import { AppNotificationService } from 'src/app/store/services/app-notification.
 import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { CourseScheduleEndpoint } from 'src/api/endpoints/course/course-schedule.endpoint';
 import { SessionResource } from 'src/api/resources/session.model';
+import { ContentHeaderComponent } from '../../pages/content-header/content-header.component';
 
 @Component({
     selector: 'app-course-schedule-details-page',
     standalone: true,
-    imports: [UiModule, HeaderPageComponent, FormsModule],
+    imports: [UiModule, HeaderPageComponent, ContentHeaderComponent, FormsModule],
     templateUrl: './course-schedule-details-page.component.html',
     styleUrl: './course-schedule-details-page.component.scss'
 })
 export class CourseScheduleDetailsPageComponent implements OnInit {
+    contentHeader: object;
     rating = 4;
     is_loading = signal<boolean>(true);
     dialogPosition = 'center';
@@ -31,6 +33,13 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.contentHeader = [
+            { label: 'Home', route: '/landing' },
+            { label: 'Dasboard', route: '/modules' },
+            { label: 'Explore Courses', route: '/modules/course-schedule/list' },
+            { label: 'Details' },
+        ];
+
         this.route.data
             .subscribe({
                 next: (response: { data: CourseScheduleResource }) => {

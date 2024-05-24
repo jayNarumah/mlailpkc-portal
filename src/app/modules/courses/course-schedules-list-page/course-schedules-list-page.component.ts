@@ -12,19 +12,22 @@ import { AppState } from 'src/app/store/app.state';
 import { Store } from '@ngrx/store';
 import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { AppNotificationService } from 'src/app/store/services/app-notification.service';
+import { ContentHeaderComponent } from '../../pages/content-header/content-header.component';
 
 @Component({
     selector: 'app-course-schedules-list-page',
     standalone: true,
-    imports: [FormsModule, InputGroupModule, InputGroupAddonModule, UiModule, SharedModule, HeaderPageComponent],
+    imports: [FormsModule, InputGroupModule, InputGroupAddonModule, UiModule, SharedModule, ContentHeaderComponent],
     templateUrl: './course-schedules-list-page.component.html',
     styleUrl: './course-schedules-list-page.component.scss'
 })
 export class CourseSchedulesListPageComponent {
+    contentHeader: object;
     rating = 5;
     filterChoice = '';
     courseCategories = ['Online', 'In-Online'];
     courses: CourseScheduleResource[] = [];
+    _courses: CourseScheduleResource[] = [];
     is_loading = signal(true);
 
     responsiveOptions: any[];
@@ -37,10 +40,16 @@ export class CourseSchedulesListPageComponent {
     ) { }
 
     ngOnInit() {
+        this.contentHeader = [
+            { label: 'Home', route: '/landing' },
+            { label: 'Dasboard', route: '/modules' },
+            { label: 'Explore Courses' },
+        ];
         // this.appLoadingService.startLoading('fetching . . .');
         this.courseScheduleEndpoint.list().subscribe({
             next: (response) => {
                 this.courses = response.data;
+                this._courses = this.courses;
                 this.is_loading.set(false);
                 // this.appLoadingService.stopLoading();
             },

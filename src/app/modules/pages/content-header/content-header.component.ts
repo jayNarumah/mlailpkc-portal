@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -11,17 +11,8 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     templateUrl: './content-header.component.html',
     styleUrl: './content-header.component.scss'
 })
-export class ContentHeaderComponent implements OnInit {
-    items: MenuItem[] | undefined;
+export class ContentHeaderComponent {
+    @Input({ required: true }) items: MenuItem[] | undefined;
 
-    home: MenuItem | undefined;
-
-    ngOnInit() {
-        this.items = [
-            { label: 'Home', icon: 'pi pi-home', route: '/installation' },
-            { label: 'Components', icon: 'pi pi-home' },
-            { label: 'Form', icon: 'pi pi-home' },
-            { label: 'InputText', icon: 'pi pi-home', route: '/inputtext' }];
-    }
 
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
@@ -28,4 +28,12 @@ import { SkeletonModule } from 'primeng/skeleton';
     ],
     declarations: [DashboardComponent]
 })
-export class DashboardModule { }
+export class DashboardModule implements OnInit {
+    header: object;
+
+    ngOnInit(): void {
+        this.header = [
+
+        ]
+    }
+}

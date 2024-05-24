@@ -12,6 +12,7 @@ import { DashboardStatsDto } from 'src/api/models/api/dashboard.model';
     styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+    contentHeader: MenuItem[] = [];
     items!: MenuItem[];
     is_loading = signal<boolean>(true);
     products!: Product[];
@@ -40,6 +41,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.initChart();
+
+        this.contentHeader = [
+            { label: 'Home', route: '/landing' },
+            { label: 'Dasboard' },
+        ];
         // this.productService
         //     .getProductsSmall()
         //     .then((data) => (this.products = data));

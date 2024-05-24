@@ -1,6 +1,4 @@
 <p-breadcrumb class="max-w-full" [model]="items">
-    <span class="pi pi-envelope"></span>
-
     <ng-template pTemplate="item" let-item>
 
         @if(item?.route){
@@ -10,7 +8,7 @@
                 <span [ngClass]="[item?.icon ? item?.icon : '', 'text-color']"></span>
                 }
 
-                <span class="text-primary font-semibold">{{ item?.label ?? '' }}If</span>
+                <span class="text-primary font-semibold">{{ item?.label ?? '' }}</span>
             </a>
         </ng-container>
         }@else {
@@ -19,7 +17,7 @@
         @if(item.icon){
         <span [class]="item?.icon ?? '' "></span>
         }
-        <span class="text-color">{{ item?.label }}Else</span>
+        <span class="text-color">{{ item?.label }}</span>
         <!-- </a> -->
         <!-- </ng-template> -->
         }

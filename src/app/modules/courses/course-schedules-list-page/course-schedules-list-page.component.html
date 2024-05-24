@@ -1,15 +1,18 @@
+<div class="m-3">
+    <app-content-header [items]="contentHeader" />
+</div>
 @if(!is_loading()){
-<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+<div class="surface-ground m-3">
 
-    <!-- <div class="flex justify-content-end align-items-center m-3"> -->
-    <!-- <div class="col-12 col-md-12 lg:col-5 ">
+    <div class="flex justify-content-end align-items-center m-3">
+        <div class="col-12 col-md-12 lg:col-5 ">
             <p-inputGroup>
                 <input type="text" pInputText placeholder="Keyword" />
-                <button type="button" pButton icon="pi pi-search" class="p-button-warning"></button>
+                <button type="button" pButton icon="pi pi-search" class="p-button-primary"></button>
 
             </p-inputGroup>
-        </div> -->
-    <!-- </div> -->
+        </div>
+    </div>
 
     <div class="grid flex justify-content-between">
         @for (course of courses; track $index) {
