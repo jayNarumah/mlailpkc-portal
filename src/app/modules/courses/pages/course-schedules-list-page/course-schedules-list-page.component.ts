@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { UiModule } from 'src/app/ui/ui.module';
-import { HeaderPageComponent } from '../../../pages/landing/header-page/header-page.component';
+import { HeaderPageComponent } from '../../../../pages/landing/header-page/header-page.component';
 import { SharedModule } from 'src/app/shared.module';
 import { FormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -12,7 +12,7 @@ import { AppState } from 'src/app/store/app.state';
 import { Store } from '@ngrx/store';
 import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { AppNotificationService } from 'src/app/store/services/app-notification.service';
-import { ContentHeaderComponent } from '../../pages/content-header/content-header.component';
+import { ContentHeaderComponent } from '../../../pages/content-header/content-header.component';
 
 @Component({
     selector: 'app-course-schedules-list-page',

@@ -33,7 +33,7 @@ export class AppMenuComponent implements OnInit {
                                 label: 'Explore', icon: 'assets/images/icons/my-courses.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'],
                             },
                             {
-                                label: 'My Courses', icon: 'assets/images/icons/my_courses.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/my-courses'],
+                                label: 'My Courses', icon: 'assets/images/icons/my_courses.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/subscriptions'],
                             },
                         ]
                     }

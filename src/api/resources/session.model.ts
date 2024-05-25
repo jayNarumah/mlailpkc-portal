@@ -1,4 +1,4 @@
-export interface SessionResource {
+export interface CourseSessionResource {
     uid: string;
     course_uid: string;
     start_date: Date;

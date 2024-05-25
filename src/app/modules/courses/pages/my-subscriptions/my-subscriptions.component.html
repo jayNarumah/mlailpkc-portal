@@ -1,0 +1,185 @@
+<div class="mx-3 mb-5">
+    <app-content-header [items]="contentHeader" />
+</div>
+<!-- Hide Content when loading -->
+@defer (when (!is_loading()) ) {
+@if(subscriptions().length === 0){
+<div pAnimateOnScroll enterClass="zoomin" leaveClass="fadeout"
+    class="surface-200 flex justify-content-center border-round w-full mt-6 p-8">
+    <div class="">
+        <div class="text-6xl text-blue-800 font-bold mb-3">NO RECORD FOUND . . .</div>
+        <div class="flex justify-content-center ">
+            <p-button label="Explore" [raised]="true" routerLink="/modules/course-schedule/subscriptions" />
+        </div>
+    </div>
+</div>
+<!-- End of content section -->
+}@else {
+<div class="surface-ground m-3">
+    <p-dataView #dv [value]="subscriptions()" [layout]="layout">
+        <ng-template pTemplate="header">
+            <div class="flex justify-content-end">
+                <p-dataViewLayoutOptions [layout]="layout" />
+            </div>
+        </ng-template>
+        <ng-template pTemplate="list" let-subscriptions>
+            <div class="grid grid-nogutter">
+                <div class="col-12" *ngFor="let item of subscriptions; let first = first" class="col-12">
+                    <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
+                        [ngClass]="{ 'border-top-1 surface-border': !first }">
+                        <div class="md:w-10rem relative">
+                            <img class="block xl:block mx-auto border-round w-full"
+                                [src]="'https://primefaces.org/cdn/primeng/images/demo/nature/nature9.jpg'"
+                                [alt]="item.name" />
+                            <p-tag [value]="item.course.format" severity="primary" class="absolute" [style.left.px]="4"
+                                [style.top.px]="4" />
+                        </div>
+                        <div
+                            class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
+                            <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
+                                <div>
+                                    <span class="font-medium text-secondary text-sm">{{ item.course.code }}</span>
+                                    <div class="text-lg font-medium text-900 mt-2">{{ item.course.description |
+                                        shorten:
+                                        50}}</div>
+                                </div>
+                                <div class="surface-100 p-1" style="border-radius: 30px">
+                                    <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2"
+                                        style="border-radius: 30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)">
+                                        <span class="text-900 font-medium text-sm">{{ item.course.capacity }}
+                                            Students</span>
+                                        <i class="pi pi-star-fill text-yellow-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-column md:align-items-end gap-5">
+                                <span class="text-xl font-semibold text-900">
+                                    {{ (item.course_session.start_date | date: 'dd/MM/yyyy') + ' - ' +
+                                    (item.course_session.end_date | date: 'dd/MM/yyyy') + 'Session' }}
+                                </span>
+                                <div class="flex flex-row-reverse md:flex-row gap-2">
+                                    <p-button icon="pi pi-eye" pTooltip="View Detail" [outlined]="true"
+                                        routerLink="/modules/course-schedule/subscriptions/details/{{item.uid}}" />
+                                    <!-- <p-button icon="pi pi-shopping-cart"
+                                        class="flex-auto md:flex-initial white-space-nowrap" label="View Details" /> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-subscription pTemplate="grid" let-subscriptions>
+            <div class="grid grid-nogutter">
+                <div class="col-12 sm:col-6 md:col-4 xl:col-6 p-2" *ngFor="let subscription of subscriptions">
+                    <div class="p-4 border-1 surface-border surface-card border-round flex flex-column">
+                        <div class="surface-50 flex justify-content-center border-round p-3">
+                            <div class="relative mx-auto">
+                                <img class="border-round w-full"
+                                    [src]="'https://primefaces.org/cdn/primeng/images/demo/nature/nature9.jpg'"
+                                    [alt]="subscription.course.code" style="max-width: 300px;" />
+                                <p-tag [value]="subscription.course.format" severity="primary" class="absolute"
+                                    [style.left.px]="4" [style.top.px]="4" />
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <div class="flex flex-row justify-content-between align-items-start gap-2">
+                                <div>
+                                    <span class="font-medium text-secondary text-sm">{{ subscription.course.code
+                                        }}</span>
+                                    <div class="text-lg font-medium text-900 mt-1">{{
+                                        subscription.course.description |
+                                        shorten: 35 }}</div>
+                                </div>
+                                <div class="surface-100 p-1" style="border-radius: 30px">
+                                    <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2"
+                                        style="border-radius: 30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)">
+                                        <span class="text-900 font-medium text-sm">{{ subscription.course.capacity +
+                                            '
+                                            Students'}}</span>
+                                        <i class="pi pi-star-fill text-yellow-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-column gap-4 mt-4">
+                                <span class="text-2xl font-semibold">
+                                    {{ (subscription.course_session.start_date | date: 'dd/MM/yyyy') + ' - ' +
+                                    (subscription.course_session.end_date | date: 'dd/MM/yyyy') + 'Session' }}
+                                </span>
+                                <div class="flex gap-2">
+                                    <p-button icon="pi pi-shopping-cart"
+                                        class="flex-auto md:flex-initial white-space-nowrap" label="Buy Now" />
+                                    <p-button icon="pi pi-heart" [outlined]="true"
+                                        routerLink="/modules/course-schedule/subscriptions/details/{{subscription.uid}}" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
+}
+
+}
+
+<!-- To show Skeleton when loading -->
+@if(is_loading()) {
+<div class="surface-ground m-3">
+    <p-dataView #dv [value]="subscriptions()" [layout]="layout">
+        <ng-template pTemplate="header">
+            <div class="flex justify-content-end">
+                <p-dataViewLayoutOptions [layout]="layout" />
+            </div>
+        </ng-template>
+        <ng-template pTemplate="list" let-products>
+            <div class="grid grid-nogutter">
+                <div class="col-12" *ngFor="let i of counterArray(6); let first = first" class="col-12">
+                    <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4"
+                        [ngClass]="{ 'border-top-1 surface-border': !first }">
+                        <p-skeleton styleClass="w-9 sm:w-16rem xl:w-10rem h-6rem block xl:block mx-auto border-round" />
+                        <div
+                            class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
+                            <div class="flex flex-column align-items-center sm:align-items-start gap-3">
+                                <p-skeleton styleClass="w-8rem border-round h-2rem" />
+                                <p-skeleton styleClass="w-6rem border-round h-1rem" />
+                                <div class="flex align-items-center gap-3">
+                                    <p-skeleton styleClass="w-6rem border-round h-1rem" />
+                                    <p-skeleton styleClass="w-3rem border-round h-1rem" />
+                                </div>
+                            </div>
+                            <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
+                                <p-skeleton styleClass="w-4rem border-round h-2rem" />
+                                <p-skeleton shape="circle" styleClass="w-3rem h-3rem" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-product pTemplate="grid" let-products>
+            <div class="grid grid-nogutter">
+                <div class="col-12 sm:col-6 md:col-4 xl:col-6 p-2" *ngFor="let i of counterArray(6)">
+                    <div class="p-4 border-1 surface-border surface-card border-round">
+                        <div class="flex flex-wrap align-items-center justify-content-between gap-2">
+                            <p-skeleton styleClass="w-6rem border-round h-2rem" />
+                            <p-skeleton styleClass="w-3rem border-round h-1rem" />
+                        </div>
+                        <div class="flex flex-column align-items-center gap-3 py-5">
+                            <p-skeleton styleClass="w-9 border-round h-10rem" />
+                            <p-skeleton styleClass="w-8rem border-round h-2rem" />
+                            <p-skeleton styleClass="w-6rem border-round h-1rem" />
+                        </div>
+                        <div class="flex align-items-center justify-content-between">
+                            <p-skeleton styleClass="w-4rem border-round h-2rem" />
+                            <p-skeleton shape="circle" styleClass="w-3rem h-3rem" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
+}
