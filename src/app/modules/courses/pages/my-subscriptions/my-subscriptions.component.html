@@ -2,7 +2,8 @@
     <app-content-header [items]="contentHeader" />
 </div>
 <!-- Hide Content when loading -->
-@defer (when (!is_loading()) ) {
+@defer (when !is_loading() ){
+@if(!is_loading()){
 @if(subscriptions().length === 0){
 <div pAnimateOnScroll enterClass="zoomin" leaveClass="fadeout"
     class="surface-200 flex justify-content-center border-round w-full mt-6 p-8">
@@ -64,7 +65,7 @@
                                     <p-button icon="pi pi-eye" pTooltip="View Detail" [outlined]="true"
                                         routerLink="/modules/course-schedule/subscriptions/details/{{item.uid}}" />
                                     <!-- <p-button icon="pi pi-shopping-cart"
-                                        class="flex-auto md:flex-initial white-space-nowrap" label="View Details" /> -->
+                                            class="flex-auto md:flex-initial white-space-nowrap" label="View Details" /> -->
                                 </div>
                             </div>
                         </div>
@@ -132,23 +133,17 @@
                                                 </div>
                                                 <p-button icon="pi pi-shopping-cart" label="Un-Subscribe"
                                                     (click)="confirm(subscription.courseSession)" [raised]="true"
-                                                    severity="primary " pTooltip="Apply for this session" />
+                                                    severity="danger " pTooltip="Apply for this session" />
                                             </span>
                                         </li>
 
                                     </ul>
                                 </div>
 
-                                <!-- <span class="text-900 text-2xl font-semibold text-blue-600 mb-4 text-center">
-                                    {{(subscription.courseSession.start_date | date: 'dd/MM/yyyy')
-                                    + '/' +(subscription.courseSession.end_date | date: 'dd/MM/yyyy') + ' Session' }}
-                                </span> -->
                                 <div class="flex justify-content-end">
                                     <p-button icon="pi pi-eye"
                                         routerLink="/modules/course-schedule/subscriptions/details/{{subscription.uid}}"
                                         class="flex-auto md:flex-initial white-space-nowrap" label="Details" />
-                                    <!-- <p-button icon="pi pi-heart" [outlined]="true"
-                                        routerLink="/modules/course-schedule/subscriptions/details/{{subscription.uid}}" /> -->
 
                                 </div>
                             </div>
@@ -162,9 +157,11 @@
 }
 
 }
+}
 
-<!-- To show Skeleton when loading -->
 @if(is_loading()) {
+<!-- To show Skeleton when loading -->
+
 <div class="surface-ground m-3">
     <p-dataView #dv [value]="subscriptions()" [layout]="layout">
         <ng-template pTemplate="header">

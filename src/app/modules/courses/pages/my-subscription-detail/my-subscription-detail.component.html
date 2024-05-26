@@ -1,8 +1,11 @@
 <div class="sm:m-2 lg:mx-5 mt-0">
     <app-content-header [items]="contentHeader" />
 </div>
+<!-- Begining of @defer block -->
 
-@defer (when (!is_loading()) ) {
+@defer (when (!is_loading()) ){
+
+@if(!is_loading()){
 <div class="grid border-1 surface-border shadow-2 border-round sm:m-2 lg:m-5 p-3">
     <div class="col-12 md:col-6 lg:col-3">
         <div class="">
@@ -51,24 +54,6 @@
         <div class="mb-3 text-2xl font-medium">
             {{ subscription()?.course.description }}
         </div>
-        <!-- <div class="mb-3 font-medium">
-            <b>Ratings:</b> &nbsp; <p-rating [(ngModel)]="rating" />
-        </div> -->
-        <!-- <div class="mb-3 font-medium">
-            <b>Capacity:</b> &nbsp; {{subscription()?.course.capacity}} Students
-        </div>
-        <div class="mb-3 font-medium">
-            <b>Format: </b> &nbsp; <p-tag [value]="subscription()?.course.format" [severity]="'success'"
-                class="absolute" />
-        </div>
-        <div class="mb-3 font-medium">
-            <b>Start Date: </b> &nbsp; {{subscription()?.course.start_date | date: 'MM-dd-yyyy'}}
-        </div>
-        <div class="mb-3 font-medium">
-            <b>End Date: </b> &nbsp; {{subscription()?.course.end_date| date: 'MM-dd-yyyy'}}
-        </div> -->
-
-
     </div>
     <div class="col-12 flex justify-content-end align-items-center">
         <span>
@@ -79,7 +64,10 @@
     </div>
 </div>
 }
-@if(is_loading()) {
+}
+<!-- End of @defer block -->
+
+@if(is_loading()){
 <div class="grid border-1 surface-border shadow-2 border-round sm:m-2 lg:m-5 p-3">
     <div class="col-12 md:col-6 lg:col-3">
         <div class="">

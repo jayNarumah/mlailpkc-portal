@@ -23,7 +23,7 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
     rating = 4;
     is_loading = signal<boolean>(true);
     dialogPosition = 'center';
-    course: CourseScheduleResource;
+    course = signal<CourseScheduleResource>(null);
     constructor(
         private route: ActivatedRoute,
         private confirmationService: ConfirmationService,
@@ -43,7 +43,7 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
         this.route.data
             .subscribe({
                 next: (response: { data: CourseScheduleResource }) => {
-                    this.course = response.data;
+                    this.course.set(response.data);
                     this.is_loading.set(false);
                 },
                 error: (err) => {
@@ -69,31 +69,37 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
         // }
         this.confirmationService.confirm({
             header: 'Are you sure?',
-            message: 'You want to subscribe to ' + this.course.code,
+            message: 'You want to subscribe to ' + this.course().code,
             accept: () => {
                 console.log('Accept');
                 this.appLoadingService.startLoading('Subscribing . . .');
+                this.is_loading.set(true);
                 this.courseScheduleEndpoint.subscribe(data.uid).subscribe({
                     next: (response) => {
                         this.appLoadingService.stopLoading();
+                        this.is_loading.set(false);
                         this.appNotificationService.showSuccess({
                             title: 'Congratulations !',
-                            detail: 'You have successfully subscribed to' + this.course.code,
-                        })
+                            detail: 'You have successfully subscribed to ' + this.course().code,
+                        });
                     },
                     error: (err) => {
+                        this.appNotificationService.showError({
+                            title: 'Oops !',
+                            detail: err,
+                        });
+                        this.is_loading.set(false);
                         this.appLoadingService.stopLoading();
-                        console.log(err);
 
                     }
                 });
 
-                // this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
             },
             reject: () => {
-                console.log('Reject');
-
-                // this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+                this.appNotificationService.showError({
+                    title: 'Rejected !',
+                    detail: 'Operation was rejected',
+                });
             }
         });
     }

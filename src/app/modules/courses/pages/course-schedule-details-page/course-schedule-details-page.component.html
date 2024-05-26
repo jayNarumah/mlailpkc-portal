@@ -24,15 +24,16 @@
 </p-confirmDialog>
 <!-- end of confirm Dialog -->
 
-@if (!is_loading()) {
+@defer (when !is_loading()) {
+@if(!is_loading()) {
 <div class="grid border-1 surface-border shadow-2 border-round sm:m-2 lg:m-5 p-3">
     <div class="col-12 md:col-6 lg:col-3">
         <div class="relative mx-auto">
             <img src="https://primefaces.org/cdn/primeng/images/demo/nature/nature9.jpg" class="border-round w-full" />
-            <p-tag [value]="course.code" [severity]="'success'" class="absolute"
+            <p-tag [value]="course().code" [severity]="'success'" class="absolute"
                 [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
             <!-- Sessions section -->
-            @for(session of course.sessions; track $index){
+            @for(session of course().sessions; track session.uid){
             <p-divider align="center">
                 <i class="pi pi-warehouse mr-2"></i>
                 <span class="text-900 font-bold text-blue-600 mb-4 text-center">{{(session.start_date | date: 'yyyy') +
@@ -72,10 +73,10 @@
     </div>
     <div class="col-12 md:col-6 lg:col-8 p-3">
         <div class="mb-3 text-3xl mb-5 font-bold">
-            {{ course.name }} - ({{course.code}})
+            {{ course().name }} - ({{course().code}})
         </div>
         <div class="mb-3 text-2xl font-medium">
-            {{ course.description }}
+            {{ course().description }}
         </div>
 
     </div>
@@ -87,7 +88,11 @@
         </span>
     </div>
 </div>
-}@else {
+}
+
+}
+
+@if(is_loading()) {
 <div class="grid border-1 surface-border shadow-2 border-round sm:m-2 lg:m-5 p-3">
     <div class="col-12 md:col-6 lg:col-3">
         <div class="">

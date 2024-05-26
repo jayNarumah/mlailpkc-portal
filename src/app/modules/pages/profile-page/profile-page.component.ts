@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ConfirmationService, MenuItem, Message, MessageService, PrimeNGConfig } from 'primeng/api';
 import { FileUpload } from 'primeng/fileupload';
@@ -13,11 +13,14 @@ import { AppState } from 'src/app/store/app.state';
 import { AppAuthActions } from 'src/app/store/auth/auth.action';
 import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { AppNotificationService } from 'src/app/store/services/app-notification.service';
+import { UiModule } from 'src/app/ui/ui.module';
 
 @Component({
     selector: 'app-profile-page',
     templateUrl: './profile-page.component.html',
-    styleUrl: './profile-page.component.scss'
+    styleUrl: './profile-page.component.scss',
+    standalone: true,
+    imports: [UiModule, ReactiveFormsModule]
 })
 export class ProfilePageComponent implements OnInit {
 
