@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
@@ -21,6 +21,7 @@ import { AppNotificationService } from 'src/app/store/services/app-notification.
     standalone: true,
     imports: [
         CommonModule,
+        RouterModule,
         DataViewModule,
         TagModule,
         RatingModule,
@@ -36,70 +37,7 @@ export class MySubscriptionsComponent implements OnInit {
     contentHeader: object;
     layout: string = 'list';
     is_loading = signal<boolean>(true);
-    subscriptions = signal<CourseSubscriptionResource[]>([
-        {
-            uid: 'uuid',
-            status: 'APPROVED',
-            created_at: new Date(),
-            last_modified_at: new Date(),
-            course_session_uid: 'uiuid',
-            course_uid: 'course_uid',
-
-            //relationships
-            course: {
-                uid: 'uuiiiid',
-                code: 'Mlailpkc 0012',
-                name: 'Mlailpkc 0012',
-                description: 'description',
-                capacity: 12,
-                format: CourseFormat.IN_PERSON,
-                enabled: true,
-                created_at: new Date(),
-                last_modified_at: new Date(),
-                sessions: [],
-                start_date: new Date(),
-                end_date: new Date(),
-                course_uid: 'course_uid',
-            },
-            course_session: {
-                uid: 'string',
-                course_uid: 'string',
-                start_date: new Date(),
-                end_date: new Date(),
-            },
-        },
-        {
-            uid: 'uuid',
-            status: 'APPROVED',
-            created_at: new Date(),
-            last_modified_at: new Date(),
-            course_session_uid: 'uiuid',
-            course_uid: 'course_uid',
-
-            //relationships
-            course: {
-                uid: 'uuiiiid',
-                code: 'Mlailpkc 0012',
-                name: 'Mlailpkc 0012',
-                description: 'description',
-                capacity: 12,
-                format: CourseFormat.IN_PERSON,
-                enabled: true,
-                created_at: new Date(),
-                last_modified_at: new Date(),
-                sessions: [],
-                start_date: new Date(),
-                end_date: new Date(),
-                course_uid: 'course_uid',
-            },
-            course_session: {
-                uid: 'string',
-                course_uid: 'string',
-                start_date: new Date(),
-                end_date: new Date(),
-            },
-        },
-    ]);
+    subscriptions = signal<CourseSubscriptionResource[]>([]);
 
     constructor(
         private readonly courseScheduleEndpoint: CourseScheduleEndpoint,
@@ -116,7 +54,7 @@ export class MySubscriptionsComponent implements OnInit {
 
         this.courseScheduleEndpoint.mySubscribtions().subscribe({
             next: (response) => {
-                console.log(response.data);
+                this.subscriptions.set(response.data);
                 this.is_loading.set(false);
             },
             error: (err) => {

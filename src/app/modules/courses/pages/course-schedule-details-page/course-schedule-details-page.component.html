@@ -27,22 +27,46 @@
 @if (!is_loading()) {
 <div class="grid border-1 surface-border shadow-2 border-round sm:m-2 lg:m-5 p-3">
     <div class="col-12 md:col-6 lg:col-3">
-        <div class="">
+        <div class="relative mx-auto">
             <img src="https://primefaces.org/cdn/primeng/images/demo/nature/nature9.jpg" class="border-round w-full" />
+            <p-tag [value]="course.code" [severity]="'success'" class="absolute"
+                [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+            <!-- Sessions section -->
+            @for(session of course.sessions; track $index){
             <p-divider align="center">
                 <i class="pi pi-warehouse mr-2"></i>
-                <b>Sessions</b>
+                <span class="text-900 font-bold text-blue-600 mb-4 text-center">{{(session.start_date | date: 'yyyy') +
+                    '/' +
+                    (session.end_date | date: 'yyyy')
+                    +' Session' }}</span>
             </p-divider>
-            @for(session of course.sessions; track $index){
             <div class="deep-blue-font mb-3 font-medium flex align-items-center justify-content-between">
-                <span> <i class="pi pi-fw"></i>{{session.start_date}} - &nbsp; {{session.end_date}}</span>
-                <p-button icon="pi pi-shopping-cart" [rounded]="true" (click)="confirm(session, $index)" [raised]="true"
-                    severity="primary " pTooltip="Apply for this session" />
+                <ul class="list-none p-0 m-0 flex-grow-1">
+                    <li class="flex align-items-center mb-3">
+                        <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                        <span class="text-900">Course Capacity &nbsp; <p-tag [value]="session.capacity"
+                                [severity]="'success'" class="absolute" /></span>
+                    </li>
+                    <li class="flex align-items-center mb-1">
+                        <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                        <span class="text-900 flex align-items-center justify-content-between">
+                            <div>
+                                Seats Teaken:&nbsp;
+                                <p-tag [value]="session.seats_taken" class="p-4" [severity]="'danger'" />
+                            </div>
+                            <p-button icon="pi pi-shopping-cart" label="Apply" (click)="confirm(session, $index)"
+                                [raised]="true" severity="primary " pTooltip="Apply for this session" />
+                        </span>
+                    </li>
 
-                <!-- <p-button icon="pi pi-shopping-cart" severity="primary" pTooltip="Apply forthis session" label="Apply"
-                    styleClass="ml-2" [raised]="true" /> -->
+                </ul>
             </div>
             }
+            <p-divider />
+
+            <!-- end of sessions section -->
+
+
 
         </div>
     </div>
@@ -53,22 +77,6 @@
         <div class="mb-3 text-2xl font-medium">
             {{ course.description }}
         </div>
-        <!-- <div class="mb-3 font-medium">
-            <b>Ratings:</b> &nbsp; <p-rating [(ngModel)]="rating" />
-        </div> -->
-        <div class="mb-3 font-medium">
-            <b>Capacity:</b> &nbsp; {{course.capacity}} Students
-        </div>
-        <div class="mb-3 font-medium">
-            <b>Format: </b> &nbsp; <p-tag [value]="course.format" [severity]="'success'" class="absolute" />
-        </div>
-        <div class="mb-3 font-medium">
-            <b>Start Date: </b> &nbsp; {{course.start_date | date: 'MM-dd-yyyy'}}
-        </div>
-        <div class="mb-3 font-medium">
-            <b>End Date: </b> &nbsp; {{course.end_date| date: 'MM-dd-yyyy'}}
-        </div>
-
 
     </div>
     <div class="col-12 flex justify-content-end align-items-center">

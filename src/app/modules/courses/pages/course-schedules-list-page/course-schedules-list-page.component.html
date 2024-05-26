@@ -21,7 +21,7 @@
                 <div class="relative mx-auto">
                     <img src="https://primefaces.org/cdn/primeng/images/demo/nature/nature9.jpg"
                         class="w-full border-round" />
-                    <p-tag [value]="course.format" [severity]="'success'" class="absolute"
+                    <p-tag [value]="course.code" [severity]="'success'" class="absolute"
                         [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
                 </div>
             </div>
@@ -44,8 +44,6 @@
                     <p-button icon="pi pi-eye" [pTooltip]="course.code" label="Details" severity="primary"
                         [outlined]="true" [raised]="true"
                         routerLink="/modules/course-schedule/details/{{course.uid}}" />
-                    <!-- <p-button icon="pi pi-shopping-cart" (click)="confirm(course, $index)" severity="primary"
-                        [pTooltip]="course.name" label="Apply" styleClass="ml-2" [raised]="true" /> -->
                 </span>
             </div>
         </div>

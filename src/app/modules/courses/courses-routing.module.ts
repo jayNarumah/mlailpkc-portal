@@ -13,8 +13,7 @@ import { MySubscriptionDetailComponent } from './pages/my-subscription-detail/my
             { path: 'list', component: CourseSchedulesListPageComponent },
             { path: 'details/:uid', component: CourseScheduleDetailsPageComponent, resolve: { data: CourseScheduleDetailResolver } },
             { path: 'subscriptions', component: MySubscriptionsComponent },
-            { path: 'subscriptions/details/:uid', component: MySubscriptionDetailComponent },
-            // { path: 'subscriptions/details/:uid', component: MySubscriptionDetailComponent, resolve: { data: MySubscriptionDetailResolver } },
+            { path: 'subscriptions/details/:uid', component: MySubscriptionDetailComponent, resolve: { data: MySubscriptionDetailResolver } },
         ],
         )
     ],

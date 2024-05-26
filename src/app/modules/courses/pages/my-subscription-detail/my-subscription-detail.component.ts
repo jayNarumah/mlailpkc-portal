@@ -20,37 +20,7 @@ export class MySubscriptionDetailComponent implements OnInit {
     rating = 4;
     is_loading = signal<boolean>(true);
     dialogPosition = 'center';
-    subscription = signal<CourseSubscriptionResource>({
-        uid: 'uuid',
-        status: 'APPROVED',
-        created_at: new Date(),
-        last_modified_at: new Date(),
-        course_session_uid: 'uiuid',
-        course_uid: 'course_uid',
-
-        //relationships
-        course: {
-            uid: 'uuiiiid',
-            code: 'Mlailpkc 0012',
-            name: 'Mlailpkc 0012',
-            description: 'description',
-            capacity: 12,
-            format: CourseFormat.IN_PERSON,
-            enabled: true,
-            created_at: new Date(),
-            last_modified_at: new Date(),
-            sessions: [],
-            start_date: new Date(),
-            end_date: new Date(),
-            course_uid: 'course_uid',
-        },
-        course_session: {
-            uid: 'string',
-            course_uid: 'string',
-            start_date: new Date(),
-            end_date: new Date(),
-        },
-    });
+    subscription = signal<CourseSubscriptionResource>(null);
     constructor(
         private route: ActivatedRoute,
         // private confirmationService: ConfirmationService,
@@ -77,7 +47,7 @@ export class MySubscriptionDetailComponent implements OnInit {
             });
     }
 
-    confirm(data: CourseSessionResource, index: number) {
+    confirm(data: CourseSessionResource) {
         // const modulus = (index + 1) % 3;
 
         // switch (modulus) {

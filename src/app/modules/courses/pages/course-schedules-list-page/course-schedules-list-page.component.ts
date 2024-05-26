@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
+import { RouterModule } from "@angular/router";
 import { UiModule } from 'src/app/ui/ui.module';
-import { HeaderPageComponent } from '../../../../pages/landing/header-page/header-page.component';
 import { SharedModule } from 'src/app/shared.module';
 import { FormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -17,7 +17,7 @@ import { ContentHeaderComponent } from '../../../pages/content-header/content-he
 @Component({
     selector: 'app-course-schedules-list-page',
     standalone: true,
-    imports: [FormsModule, InputGroupModule, InputGroupAddonModule, UiModule, SharedModule, ContentHeaderComponent],
+    imports: [FormsModule, RouterModule, InputGroupModule, InputGroupAddonModule, UiModule, SharedModule, ContentHeaderComponent],
     templateUrl: './course-schedules-list-page.component.html',
     styleUrl: './course-schedules-list-page.component.scss'
 })

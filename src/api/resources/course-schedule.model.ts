@@ -7,7 +7,6 @@ export interface CourseScheduleResource {
     name: string;
     description: string;
     capacity: number;
-    format: CourseFormat;
     enabled: boolean;
     created_at: Date;
     last_modified_at: Date;

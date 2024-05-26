@@ -12,6 +12,6 @@ export interface CourseSubscriptionResource {
 
     //relationships
     course?: CourseScheduleResource;
-    course_session?: CourseSessionResource;
+    courseSession?: CourseSessionResource;
 
 }

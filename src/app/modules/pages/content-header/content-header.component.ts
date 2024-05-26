@@ -7,7 +7,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 @Component({
     selector: 'app-content-header',
     standalone: true,
-    imports: [BreadcrumbModule, RouterModule],
+    imports: [BreadcrumbModule],
     templateUrl: './content-header.component.html',
     styleUrl: './content-header.component.scss'
 })
