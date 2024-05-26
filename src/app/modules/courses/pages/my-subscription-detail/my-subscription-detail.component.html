@@ -10,14 +10,14 @@
             <p-tag [value]="subscription().status" severity="primary" class="absolute" [style.left.px]="4"
                 [style.top.px]="4" />
 
-            <p-divider align="center">
+            <p-divider classs="ml-3" align="center">
                 <span
                     class="text-900 font-bold text-blue-600 mb-4 text-center">{{(subscription()?.courseSession.start_date
                     | date: 'yyyy') + '/' +
                     (subscription()?.courseSession.end_date | date: 'yyyy')
                     +' Session' }}</span>
             </p-divider>
-            <div class="deep-blue-font mb-3 font-medium flex align-items-center justify-content-between">
+            <div class="deep-blue-font font-medium flex align-items-center justify-content-between ml-3">
                 <ul class="list-none p-0 m-0 flex-grow-1">
                     <li class="flex align-items-center mb-3">
                         <i class="pi pi-check-circle text-green-500 mr-2"></i>
@@ -41,7 +41,6 @@
 
                 </ul>
             </div>
-            <p-divider />
 
         </div>
     </div>
@@ -55,7 +54,7 @@
         <!-- <div class="mb-3 font-medium">
             <b>Ratings:</b> &nbsp; <p-rating [(ngModel)]="rating" />
         </div> -->
-        <div class="mb-3 font-medium">
+        <!-- <div class="mb-3 font-medium">
             <b>Capacity:</b> &nbsp; {{subscription()?.course.capacity}} Students
         </div>
         <div class="mb-3 font-medium">
@@ -67,7 +66,7 @@
         </div>
         <div class="mb-3 font-medium">
             <b>End Date: </b> &nbsp; {{subscription()?.course.end_date| date: 'MM-dd-yyyy'}}
-        </div>
+        </div> -->
 
 
     </div>

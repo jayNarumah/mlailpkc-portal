@@ -7,15 +7,15 @@
     <div class="flex justify-content-end align-items-center m-3">
         <div class="col-12 col-md-12 lg:col-5 ">
             <p-inputGroup>
-                <input type="text" pInputText placeholder="Keyword" />
-                <button type="button" pButton icon="pi pi-search" class="p-button-primary"></button>
+                <input type="text" pInputText (keyup)="searchCourses($event.target.value)" placeholder="Keyword" />
+                <button type="button" pButton icon="pi pi-search" class="p-button-secondary"></button>
 
             </p-inputGroup>
         </div>
     </div>
 
     <div class="grid flex justify-content-between">
-        @for (course of courses; track $index) {
+        @for (course of courses(); track $index) {
         <div class="border-1 surface-border shadow-2 border-round m-3 p-3 sm:col-12 lg:col-5">
             <div class="mb-3">
                 <div class="relative mx-auto">

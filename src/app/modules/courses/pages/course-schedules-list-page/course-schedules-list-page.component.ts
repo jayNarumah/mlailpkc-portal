@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { UiModule } from 'src/app/ui/ui.module';
 import { SharedModule } from 'src/app/shared.module';
@@ -21,13 +21,16 @@ import { ContentHeaderComponent } from '../../../pages/content-header/content-he
     templateUrl: './course-schedules-list-page.component.html',
     styleUrl: './course-schedules-list-page.component.scss'
 })
+
+
 export class CourseSchedulesListPageComponent {
     contentHeader: object;
     rating = 5;
     filterChoice = '';
     courseCategories = ['Online', 'In-Online'];
-    courses: CourseScheduleResource[] = [];
     _courses: CourseScheduleResource[] = [];
+    courses = signal<CourseScheduleResource[]>([]);
+    // courses = computed(() => this._courses());
     is_loading = signal(true);
 
     responsiveOptions: any[];
@@ -48,8 +51,8 @@ export class CourseSchedulesListPageComponent {
         // this.appLoadingService.startLoading('fetching . . .');
         this.courseScheduleEndpoint.list().subscribe({
             next: (response) => {
-                this.courses = response.data;
-                this._courses = this.courses;
+                this._courses = response.data;
+                this.courses.set(this._courses);
                 this.is_loading.set(false);
                 // this.appLoadingService.stopLoading();
             },
@@ -77,5 +80,14 @@ export class CourseSchedulesListPageComponent {
                 numScroll: 1
             }
         ];
+    }
+
+    searchCourses(criteria: string) {
+        const searchTerm = criteria.toLowerCase();
+
+        this.courses.update(() => this._courses.filter(course => {
+            const courseData = course.code.toLowerCase() + ' ' + course.name.toLowerCase() + ' ' + course.description.toLowerCase(); // Combine relevant fields
+            return courseData.includes(searchTerm);
+        }));
     }
 }
