@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, computed, signal } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "../service/app.layout.service";
 import { AppState } from '../../store/app.state';
@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AuthService } from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { AppAuthActions } from '../../store/auth/auth.action';
+import { AuthLoggedInUserDto } from 'src/api/models/auth.request';
 
 @Component({
     selector: 'app-topbar',
@@ -16,8 +17,13 @@ export class AppTopBarComponent {
     items!: MenuItem[];
     notificationItems!: MenuItem[];
     selectedNotification!: MenuItem;
+    user = signal<AuthLoggedInUserDto>(this.authService.user);
+    name = computed(() => {
+        const name = this.user().full_name.split(' ');
 
-    user = this.authService.user;
+        return name[0];
+    });
+
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
