@@ -10,15 +10,28 @@
     <div class="flex justify-content-end align-items-center m-3">
         <div class="col-12 col-md-12 lg:col-5 ">
             <p-inputGroup>
-                <input type="text" pInputText (keyup)="searchCourses($event.target.value)" placeholder="Keyword" />
+                <input type="text" pInputText (keyup)="searchCourses($event.target.value)" placeholder="Keyword"
+                    #searchInput />
                 <button type="button" pButton icon="pi pi-search" class="p-button-secondary"></button>
 
             </p-inputGroup>
         </div>
     </div>
 
+    @if(courses().length === 0){
+    <div pAnimateOnScroll enterClass="zoomin" leaveClass="fadeout"
+        class="surface-200 flex justify-content-center border-round w-full mt-6 p-8">
+        <div class="">
+            <div class="text-6xl text-blue-800 font-bold mb-3">NO RECORD FOUND . . .</div>
+            <div class="flex justify-content-center ">
+                <p-button label="Reset" [raised]="true" (click)="searchCourses(''); searchInput.value = ''" />
+            </div>
+        </div>
+    </div>
+    }
+
     <div class="grid flex justify-content-between">
-        @for (course of courses(); track $index) {
+        @for (course of courses(); track course.uid) {
         <div class="border-1 surface-border shadow-2 border-round m-3 p-3 sm:col-12 lg:col-5">
             <div class="mb-3">
                 <div class="relative mx-auto">

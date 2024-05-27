@@ -10,7 +10,7 @@
     <div class="">
         <div class="text-6xl text-blue-800 font-bold mb-3">NO RECORD FOUND . . .</div>
         <div class="flex justify-content-center ">
-            <p-button label="Explore" [raised]="true" routerLink="/modules/course-schedule/subscriptions" />
+            <p-button label="Explore" [raised]="true" routerLink="/modules/course-schedule/list" />
         </div>
     </div>
 </div>
@@ -24,6 +24,7 @@
             </div>
         </ng-template>
         <ng-template pTemplate="list" let-subscriptions>
+
             <div class="grid grid-nogutter">
                 <div class="col-12" *ngFor="let item of subscriptions; let first = first" class="col-12">
                     <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3"
