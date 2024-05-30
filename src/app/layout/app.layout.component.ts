@@ -13,8 +13,8 @@ import { NoticationResource } from 'src/api/models/notication.model';
     templateUrl: './app.layout.component.html'
 })
 export class AppLayoutComponent implements OnInit, OnDestroy {
-    notfications = signal<NoticationResource[]>([]);
-    messages = computed(() => this.notfications().map(item => item.title));
+    notifications = signal<NoticationResource[]>([]);
+    messages = signal<Message[]>([]);
     overlayMenuOpenSubscription: Subscription;
 
     menuOutsideClickListener: any;
@@ -68,11 +68,17 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.notificationEndpoint.list().subscribe({
             next: (response) => {
-                this.notfications.set(response.data);
+                this.notifications.set(response.data);
+                this.messages.set([...response.data.map(item => ({ severity: 'info', detail: item.title }))]);
             },
             error: (err) => console.log(err)
 
         });
+    }
+
+    viewMessage(e) {
+        console.log(e.target.value);
+
     }
 
     hideMenu() {

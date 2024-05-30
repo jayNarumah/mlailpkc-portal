@@ -1,7 +1,5 @@
-import { Component, ElementRef, ViewChild, computed, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
-import { AuthLoggedInUserDto } from 'src/api/models/auth.request';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { UiModule } from 'src/app/ui/ui.module';
 

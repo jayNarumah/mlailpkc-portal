@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, computed, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild, computed, signal, input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "../service/app.layout.service";
 import { AppState } from '../../store/app.state';
@@ -7,6 +7,7 @@ import { AuthService } from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { AppAuthActions } from '../../store/auth/auth.action';
 import { AuthLoggedInUserDto } from 'src/api/models/auth.request';
+import { UserNotificationResource } from 'src/environments/api/models/user-notification.model';
 
 @Component({
     selector: 'app-topbar',
@@ -15,7 +16,7 @@ import { AuthLoggedInUserDto } from 'src/api/models/auth.request';
 })
 export class AppTopBarComponent {
     items!: MenuItem[];
-    notificationItems!: MenuItem[];
+    notificationItems = input<UserNotificationResource[]>([]);
     selectedNotification!: MenuItem;
     user = signal<AuthLoggedInUserDto>(this.authService.user);
     name = computed(() => {
@@ -40,20 +41,22 @@ export class AppTopBarComponent {
     }
 
     ngOnInit() {
-        this.notificationItems = [
-            {
-                label: 'MLAILPKC-001 Lecture is to be started today by 2:30pm',
-                routerLink: '/notification/notifications',
-            },
-            {
-                label: 'You have MLAILPKC-002 exam today by 12:30a.m',
-                routerLink: '/notification/notifications',
-            },
-            {
-                label: 'MLAILPKC-005 Lecture is to be started today by 2:30pm',
-                routerLink: '/notification/notifications',
-            },
-        ];
+        console.log(this.notificationItems());
+
+        // this.notificationItems = [
+        //     {
+        //         label: 'MLAILPKC-001 Lecture is to be started today by 2:30pm',
+        //         routerLink: '/notification/notifications',
+        //     },
+        //     {
+        //         label: 'You have MLAILPKC-002 exam today by 12:30a.m',
+        //         routerLink: '/notification/notifications',
+        //     },
+        //     {
+        //         label: 'MLAILPKC-005 Lecture is to be started today by 2:30pm',
+        //         routerLink: '/notification/notifications',
+        //     },
+        // ];
 
         this.items = [
             {
