@@ -13,9 +13,17 @@ $gutter: 1rem; //for primeflex grid system
 @import "assets/demo/styles/badges.scss";
 @import "assets/demo/styles/code.scss";
 
-// body {
-//     font-family: 'Source Sans Pro', sans-serif;
-// }
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand-Regular.woff2') format('woff2'),
+        url('/fonts/Quicksand-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
 
 
 .menu-section {

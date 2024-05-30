@@ -1,47 +1,59 @@
-<div
-    class="py-4 px-4 mx-0 md:mx-6 lg:mx-8 lg:px-8 flex align-items-center justify-content-between relative lg:static mb-3">
-    <a class="flex align-items-center" href="#">
-        <img src="assets/images/logo/logo.jpeg" alt="Sakai Logo" height="50" class="mr-0 lg:mr-2"><span
-            class="text-900 font-medium text-2xl line-height-3 mr-8">MLailpkc</span>
-    </a>
-    <a pRipple class="cursor-pointer block lg:hidden text-700" pStyleClass="@next" enterClass="hidden"
-        leaveToClass="hidden" [hideOnOutsideClick]="true">
-        <i class="pi pi-bars text-4xl"></i>
-    </a>
-    <div class="align-items-center flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full left-0 px-6 lg:px-0 z-2 menu-section"
-        style="top:120px;">
-        <ul class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row cursor-pointer">
-            <li>
-                <a (click)="router.navigate(['/auth/login'], {fragment: 'home'})" pRipple
-                    class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a (click)="router.navigate(['/landing'], {fragment: 'features'})" pRipple
-                    class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
-                    <span>About Us</span>
-                </a>
-            </li>
-            <li>
-                <a (click)="router.navigate(['/modules/course-schedule/list'], {fragment: 'highlights'})" pRipple
-                    class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
-                    <span>Courses</span>
-                </a>
-            </li>
-            <li>
-                <a (click)="router.navigate(['#'], {fragment: 'pricing'})" pRipple
-                    class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
-                    <span>Contact Us</span>
-                </a>
-            </li>
-        </ul>
-        <div
-            class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0">
-            <button pButton pRipple label="Login" routerLink="/auth/login"
-                class="p-button-text p-button-rounded border-none font-light line-height-2 text-blue-500"></button>
-            <button pButton pRipple label="Register" routerLink="/auth/register"
-                class="p-button-rounded border-none ml-5 font-light line-height-2 bg-blue-500 text-white"></button>
+<div>
+    <div class="layout-topbar px-2 md:px-4 lg:px-6">
+        <div class="p-2  md:px-4">
+            <p-avatar image="assets/images/logo/logo.jpeg"
+                styleClass="flex align-items-center justify-content-center mr-2" size="xlarge" />
+
+        </div>
+
+        <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button"
+            (click)="layoutService.showProfileSidebar()">
+            <i class="pi pi-ellipsis-v"></i>
+        </button>
+
+        <div #topbarmenu class="layout-topbar-menu" [ngClass]="{
+      'layout-topbar-menu-mobile-active':
+        layoutService.state.profileSidebarVisible
+    }">
+            <span class="mr-4 p-link text-800"><i class="pi pi-search"
+                    style="font-size: 17px; padding-top: 4px;"></i></span>
+            <span (click)="op.toggle($event)" class="mr-4 p-link text-800"><i class="pi pi-bell"
+                    style="font-size: 17px; padding-top: 4px;"></i></span>
+            <p-overlayPanel #op [showCloseIcon]="false" [style]="{ width: '450px' }" styleClass="shadow-5 mt-5">
+                <ng-template pTemplate>
+                    <p-table [value]="notificationItems" selectionMode="single" [(selection)]="selectedNotification"
+                        (onNotificationSelect)="onNotificationSelect($event)" [rows]="10" responsiveLayout="scroll">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th><strong>NOTIFICATIONS</strong></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-notificationItem>
+                            <tr routerLink="{{ notificationItem.routerLink }}" [pSelectableRow]="rowData">
+                                <td>
+                                    <p class="grey-font mb-0 pb-0">
+                                        <small><strong>{{ notificationItem.label }}</strong></small>
+                                    </p>
+                                    <p class="text-500 mt-0 pt-0">
+                                        <small>{{ notificationItem.label }}</small>
+                                    </p>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                    <button pButton pRipple label="Clear all notifications"
+                        class="w-full p-button-raised p-button-secondary"></button>
+                </ng-template>
+            </p-overlayPanel>
+            <!-- <p-menu #NotificationMenu [popup]="true" [model]="notificationItems"></p-menu>
+            <ng-container>
+                <p-chip [label]="name()" image="../../../assets/demo/images/avatar/xuxuefeng.png" styleClass="mr-2">
+                </p-chip>
+            </ng-container>
+
+            <button class="p-link" (click)="menu.toggle($event)">
+                <i class="pi pi-chevron-down"></i></button><p-menu styleClass="p-2" #menu [popup]="true"
+                [model]="items"></p-menu> -->
         </div>
     </div>
 </div>

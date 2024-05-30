@@ -24,13 +24,15 @@
         <div class="">
             <div class="text-6xl text-blue-800 font-bold mb-3">NO RECORD FOUND . . .</div>
             <div class="flex justify-content-center ">
-                <p-button label="Reset" [raised]="true" (click)="searchCourses(''); searchInput.value = ''" />
+                <p-button label="Reset" icon="pi pi-filter-slash" [raised]="true" severity="secondary"
+                    (click)="searchCourses(''); searchInput.value = ''" />
             </div>
         </div>
     </div>
     }
 
     <div class="grid flex justify-content-between">
+        <!-- Begining of @for block -->
         @for (course of courses(); track course.uid) {
         <div class="border-1 surface-border shadow-2 border-round m-3 p-3 sm:col-12 lg:col-5">
             <div class="mb-3">
@@ -47,15 +49,8 @@
             <div class="mb-3 font-medium" [pTooltip]="course.description">
                 {{ course.description | shorten: 50 }}
             </div>
-            <!-- <div class="mb-3 font-medium">
-                        Ratings: <p-rating [(ngModel)]="rating" />
-                    </div> -->
             <p-divider />
             <div class="flex justify-content-end align-items-center">
-                <!-- <div class="mt-0 font-semibold text-xl">
-                            {{ '$' + 300}}
-                        </div> -->
-
                 <span>
                     <p-button icon="pi pi-eye" [pTooltip]="course.code" label="Details" severity="primary"
                         [outlined]="true" [raised]="true"
@@ -64,6 +59,7 @@
             </div>
         </div>
         }
+        <!-- End of  @for block -->
     </div>
 </div>
 }
@@ -82,7 +78,7 @@
         <div class="border-1 surface-border shadow-2 border-round m-3 p-3 sm:col-12 lg:col-5">
             <div class="mb-3">
                 <div class="relative mx-auto">
-                    <p-skeleton size="33rem" width="100%" />
+                    <p-skeleton size="33rem" width="95%" />
                 </div>
             </div>
             <div class="mb-3 text-xl font-bold">
