@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Message } from 'primeng/api';
+
 import { RegistrationEndpoint } from 'src/api/endpoints/auth/registration.endpoint';
 import { StudentCategoryEndpoint } from 'src/api/endpoints/student-category.endpoint';
 import { Gender } from 'src/api/enums/gender.enum';
-import { ApiError } from 'src/api/models/api-interfaces';
 import { SignupRequestDto } from 'src/api/models/api/registration.model';
-import { ReportModel } from 'src/api/models/report.model';
 import { StudentCateogry } from 'src/api/models/student-category.model';
 import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { AppNotificationService } from 'src/app/store/services/app-notification.service';
@@ -20,10 +18,10 @@ import { AppNotificationService } from 'src/app/store/services/app-notification.
 export class RegistrationPageComponent implements OnInit {
     registrationForm: FormGroup;
 
-    visible = false;
-    message?: ReportModel;
+    // visible = true;
+    // message?: ReportModel;
     complete = false;
-    declined = false;
+    // declined = false;
     msg: Message[] = [];
 
     studentCategories: StudentCateogry[] = [];
@@ -32,11 +30,10 @@ export class RegistrationPageComponent implements OnInit {
 
     constructor(
         private readonly fb: FormBuilder,
-        private readonly router: Router,
         private readonly appLoadingService: AppLoadingService,
+        private readonly registrationEndpoint: RegistrationEndpoint,
         private readonly appNotificationService: AppNotificationService,
         private readonly studentCategoryEndpoint: StudentCategoryEndpoint,
-        private readonly registrationEndpoint: RegistrationEndpoint,
     ) {
         this.registrationForm = this.fb.group({
             full_name: this.fb.control<string>('', [Validators.required]),
@@ -71,13 +68,13 @@ export class RegistrationPageComponent implements OnInit {
         this.appLoadingService.startLoading('Signup . . .');
         this.registrationEndpoint.signup(formData).subscribe({
             next: () => {
-                this.appNotificationService.showSuccess({
-                    title: 'Registration !',
-                    detail: `was Successful`,
-                });
-                this.declined = false;
+                // this.appNotificationService.showSuccess({
+                //     title: 'Registration !',
+                //     detail: `was Successful`,
+                // });
+                this.complete = true;
 
-                this.router.navigate(['/auth/login']);
+                // this.router.navigate(['/auth/login']);
                 // Show toast
 
                 this.appLoadingService.stopLoading();
@@ -85,9 +82,7 @@ export class RegistrationPageComponent implements OnInit {
             error: (error) => {
                 this.appLoadingService.stopLoading();
                 this.msg = error;
-                console.log(this.msg);
 
-                this.declined = true;
                 this.appNotificationService.showError({
                     title: 'Oops !',
                     detail: error,

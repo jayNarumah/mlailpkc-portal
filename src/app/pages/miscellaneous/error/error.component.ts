@@ -1,0 +1,24 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+    selector: 'app-error',
+    templateUrl: './error.component.html',
+    styleUrls: ['./error.component.scss']
+})
+export class ErrorComponent implements OnInit {
+    constructor() {
+    }
+
+    // Lifecycle Hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void {
+    }
+
+    goBack() {
+        window.history.back();
+    }
+}
