@@ -1,0 +1,117 @@
+<div class="sm:m-2 lg:mx-5 mt-0">
+    <app-content-header [items]="contentHeader" />
+</div>
+<!-- Begining of @defer block -->
+
+@defer (when !is_loading() ){
+
+@if(!is_loading()){
+<div class="grid border-1 surface-border shadow-2 border-round sm:m-2 lg:m-5 p-3">
+    <div class="col-12 md:col-6 lg:col-3">
+        <div class="">
+            <img src="https://primefaces.org/cdn/primeng/images/demo/nature/nature9.jpg" class="border-round w-full" />
+            <p-tag [value]="subscription().status" severity="primary" class="absolute" [style.left.px]="4"
+                [style.top.px]="4" />
+
+            <p-divider classs="ml-3" align="center">
+                <span
+                    class="text-900 font-bold text-blue-600 mb-4 text-center">{{(subscription()?.courseSession.start_date
+                    | date: 'yyyy') + '/' +
+                    (subscription()?.courseSession.end_date | date: 'yyyy')
+                    +' Session' }}</span>
+            </p-divider>
+            <div class="deep-blue-font font-medium flex align-items-center justify-content-between ml-3">
+                <ul class="list-none p-0 m-0 flex-grow-1">
+                    <li class="flex align-items-center mb-3">
+                        <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                        <span class="text-900">Course Capacity &nbsp; <p-tag
+                                [value]="subscription()?.courseSession.capacity" [severity]="'success'"
+                                class="absolute" /></span>
+                    </li>
+                    <li class="flex align-items-center mb-3">
+                        <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                        <span class="text-900 flex align-items-center justify-content-between">
+                            <div>
+                                Seats Teaken:&nbsp;
+                                <p-tag [value]="subscription()?.courseSession.seats_taken" class="p-4"
+                                    [severity]="'danger'" />
+                            </div>
+                        </span>
+                    </li>
+                    <li class="flex justify-content-end mb-3">
+
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-8 p-3">
+        <div class="mb-3 text-3xl mb-5 font-bold">
+            {{ subscription()?.course.name }} - ({{subscription()?.course.code}})
+        </div>
+        <div class="mb-3 text-2xl font-medium">
+            {{ subscription()?.course.description }}
+        </div>
+    </div>
+    <div class="col-12 flex justify-content-end align-items-center">
+        <span>
+            <p-button icon="pi pi-arrow-left" (click)="goBack()" label="Go Back" severity="help" [outlined]="true"
+                [raised]="true" />
+
+        </span>
+    </div>
+</div>
+}
+}
+<!-- End of @defer block -->
+
+@if(is_loading()){
+<div class="grid border-1 surface-border shadow-2 border-round sm:m-2 lg:m-5 p-3">
+    <div class="col-12 md:col-6 lg:col-3">
+        <div class="">
+            <p-skeleton width="20rem" height="25rem" />
+            <p-divider align="center">
+                <i class="pi pi-warehouse mr-2"></i>
+                <b>Session</b>
+            </p-divider>
+            @for(session of [1, 2]; track $index){
+            <div class="deep-blue-font mb-3 font-medium flex align-items-center justify-content-between">
+                <span> <p-skeleton width="12rem" height="2rem" /> </span>
+                <p-skeleton shape="circle" size="2rem" styleClass="mr-2" />
+            </div>
+            }
+
+        </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-8 p-3 ml-3">
+        <div class="mb-3 text-3xl mb-5 font-bold">
+            <p-skeleton width="20rem" height="2rem" />
+        </div>
+        <div class="mb-3 text-2xl font-medium">
+            <p-skeleton width="25rem" height="2rem" />
+        </div>
+        <div class="mb-3 text-3xl mb-5 font-bold">
+            <p-skeleton width="20rem" height="2rem" />
+        </div>
+        <div class="mb-3 text-2xl font-medium">
+            <p-skeleton width="15rem" height="2rem" />
+        </div>
+        <div class="mb-3 text-3xl mb-5 font-bold">
+            <p-skeleton width="20rem" height="2rem" />
+        </div>
+        <div class="mb-3 text-2xl font-medium">
+            <p-skeleton width="15rem" height="2rem" />
+        </div>
+        <div class="mb-3 text-3xl mb-5 font-bold">
+            <p-skeleton width="20rem" height="2rem" />
+        </div>
+    </div>
+    <div class="col-12 flex justify-content-end align-items-center">
+        <span>
+            <p-skeleton width="7rem" height="3rem" />
+        </span>
+    </div>
+</div>
+}

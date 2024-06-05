@@ -22,8 +22,11 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { MessagesModule } from 'primeng/messages';
+import { AvatarModule } from 'primeng/avatar';
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppMenuitemComponent,
         AppTopBarComponent,
         AppFooterComponent,
@@ -31,7 +34,9 @@ import { CommonModule } from '@angular/common';
         AppSidebarComponent,
         AppLayoutComponent,
     ],
-    exports: [AppLayoutComponent], imports: [CommonModule,
+    exports: [AppLayoutComponent, AppTopBarComponent],
+    imports: [
+        CommonModule,
         FormsModule,
         InputTextModule,
         MenuModule,
@@ -40,10 +45,13 @@ import { CommonModule } from '@angular/common';
         TableModule,
         ButtonModule,
         OverlayPanelModule,
+        MessagesModule,
         BadgeModule,
         RadioButtonModule,
+        AvatarModule,
         InputSwitchModule,
         RippleModule,
         RouterModule,
-        AppConfigModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        AppConfigModule], providers: [provideHttpClient(withInterceptorsFromDi())]
+})
 export class AppLayoutModule { }

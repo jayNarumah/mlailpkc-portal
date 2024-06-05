@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
+import { RouterModule } from "@angular/router";
 import { UiModule } from 'src/app/ui/ui.module';
-import { HeaderPageComponent } from '../../../pages/landing/header-page/header-page.component';
 import { SharedModule } from 'src/app/shared.module';
 import { FormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -12,19 +12,25 @@ import { AppState } from 'src/app/store/app.state';
 import { Store } from '@ngrx/store';
 import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { AppNotificationService } from 'src/app/store/services/app-notification.service';
+import { ContentHeaderComponent } from '../../../pages/content-header/content-header.component';
 
 @Component({
     selector: 'app-course-schedules-list-page',
     standalone: true,
-    imports: [FormsModule, InputGroupModule, InputGroupAddonModule, UiModule, SharedModule, HeaderPageComponent],
+    imports: [FormsModule, RouterModule, InputGroupModule, InputGroupAddonModule, UiModule, SharedModule, ContentHeaderComponent],
     templateUrl: './course-schedules-list-page.component.html',
     styleUrl: './course-schedules-list-page.component.scss'
 })
+
+
 export class CourseSchedulesListPageComponent {
+    contentHeader: object;
     rating = 5;
     filterChoice = '';
     courseCategories = ['Online', 'In-Online'];
-    courses: CourseScheduleResource[] = [];
+    _courses: CourseScheduleResource[] = [];
+    courses = signal<CourseScheduleResource[]>([]);
+    // courses = computed(() => this._courses());
     is_loading = signal(true);
 
     responsiveOptions: any[];
@@ -37,10 +43,16 @@ export class CourseSchedulesListPageComponent {
     ) { }
 
     ngOnInit() {
+        this.contentHeader = [
+            { label: 'Home', route: '/landing' },
+            { label: 'Dasboard', route: '/modules' },
+            { label: 'Explore Courses' },
+        ];
         // this.appLoadingService.startLoading('fetching . . .');
         this.courseScheduleEndpoint.list().subscribe({
             next: (response) => {
-                this.courses = response.data;
+                this._courses = response.data;
+                this.courses.set(this._courses);
                 this.is_loading.set(false);
                 // this.appLoadingService.stopLoading();
             },
@@ -68,5 +80,14 @@ export class CourseSchedulesListPageComponent {
                 numScroll: 1
             }
         ];
+    }
+
+    searchCourses(criteria: string) {
+        const searchTerm = criteria.toLowerCase();
+
+        this.courses.update(() => this._courses.filter(course => {
+            const courseData = course.code.toLowerCase() + ' ' + course.name.toLowerCase() + ' ' + course.description.toLowerCase(); // Combine relevant fields
+            return courseData.includes(searchTerm);
+        }));
     }
 }

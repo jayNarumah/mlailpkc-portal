@@ -1,16 +1,20 @@
-import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2, ViewChild, computed, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { LayoutService } from "./service/app.layout.service";
 import { AppSidebarComponent } from "./components/app.sidebar.component";
 import { AppTopBarComponent } from './components/app.topbar.component';
+import { Message } from 'primeng/api';
+import { NotificationEndpoint } from 'src/api/endpoints/notification.endpoint';
+import { NoticationResource } from 'src/api/models/notication.model';
 
 @Component({
     selector: 'app-layout',
     templateUrl: './app.layout.component.html'
 })
-export class AppLayoutComponent implements OnDestroy {
-
+export class AppLayoutComponent implements OnInit, OnDestroy {
+    notifications = signal<NoticationResource[]>([]);
+    messages = signal<Message[]>([]);
     overlayMenuOpenSubscription: Subscription;
 
     menuOutsideClickListener: any;
@@ -21,7 +25,11 @@ export class AppLayoutComponent implements OnDestroy {
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+    constructor(
+        private readonly notificationEndpoint: NotificationEndpoint,
+        public layoutService: LayoutService,
+        public renderer: Renderer2,
+        public router: Router) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -55,6 +63,22 @@ export class AppLayoutComponent implements OnDestroy {
                 this.hideMenu();
                 this.hideProfileMenu();
             });
+    }
+
+    ngOnInit(): void {
+        this.notificationEndpoint.list().subscribe({
+            next: (response) => {
+                this.notifications.set(response.data);
+                this.messages.set([...response.data.map(item => ({ severity: 'info', detail: item.title }))]);
+            },
+            error: (err) => console.log(err)
+
+        });
+    }
+
+    viewMessage(e) {
+        console.log(e.target.value);
+
     }
 
     hideMenu() {

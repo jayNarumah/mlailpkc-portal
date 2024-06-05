@@ -1,3 +1,7 @@
+<div class="mb-3">
+    <app-content-header [items]="contentHeader" />
+</div>
+@if(!is_loading()){
 <div class="grid">
     <div class="col-12 lg:col-6 xl:col-3">
         <div class="card dark-card gradient-background p-4">
@@ -12,25 +16,25 @@
                 </div>
             </div>
             <!-- <span class="text-green-500 font-medium">24 new </span>
-                <span class="text-500">since last visit</span> -->
+                    <span class="text-500">since last visit</span> -->
         </div>
     </div>
     <!-- <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card dark-card p-4">
-            <div class="flex justify-content-between align-items-center content">
-                <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
-                    [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
-                    <i class="pi pi-warehouse text-blue-800 text-5xl"></i>
-                </div>
-                <div>
-                    <span class="block text-500 font-medium mb-3">Available Courses</span>
-                    <div class="text-1000 font-bold text-5xl">
-                        {{ dashboardStats?.courses_count ?? 0 }}
+            <div class="card dark-card p-4">
+                <div class="flex justify-content-between align-items-center content">
+                    <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
+                        [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
+                        <i class="pi pi-warehouse text-blue-800 text-5xl"></i>
+                    </div>
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Available Courses</span>
+                        <div class="text-1000 font-bold text-5xl">
+                            {{ dashboardStats?.courses_count ?? 0 }}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div> -->
+        </div> -->
     <div class="col-12 lg:col-6 xl:col-3">
         <div class="card shadow-2 p-4">
             <div class="flex justify-content-between align-items-center">
@@ -46,7 +50,7 @@
                 </div>
             </div>
             <!-- <span class="text-green-500 font-medium">24 new </span>
-            <span class="text-500">since last visit</span> -->
+                <span class="text-500">since last visit</span> -->
         </div>
     </div>
     <div class="col-12 lg:col-6 xl:col-3">
@@ -62,7 +66,7 @@
                 </div>
             </div>
             <!-- <span class="text-green-500 font-medium">24 new </span>
-            <span class="text-500">since last visit</span> -->
+                <span class="text-500">since last visit</span> -->
         </div>
     </div>
     <div class="col-12 lg:col-6 xl:col-3">
@@ -78,57 +82,57 @@
                 </div>
             </div>
             <!-- <span class="text-green-500 font-medium">24 new </span>
-            <span class="text-500">since last visit</span> -->
+                <span class="text-500">since last visit</span> -->
         </div>
     </div>
     <!-- <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card mb-0">
-            <div class="flex justify-content-between mb-3">
-                <div>
-                    <span class="block text-500 font-medium mb-3">Revenue</span>
-                    <div class="text-900 font-medium text-xl">$2.100</div>
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Revenue</span>
+                        <div class="text-900 font-medium text-xl">$2.100</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-map-marker text-orange-500 text-xl"></i>
+                    </div>
                 </div>
-                <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
-                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                    <i class="pi pi-map-marker text-orange-500 text-xl"></i>
-                </div>
+                <span class="text-green-500 font-medium">%52+ </span>
+                <span class="text-500">since last week</span>
             </div>
-            <span class="text-green-500 font-medium">%52+ </span>
-            <span class="text-500">since last week</span>
         </div>
-    </div>
-    <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card mb-0">
-            <div class="flex justify-content-between mb-3">
-                <div>
-                    <span class="block text-500 font-medium mb-3">Customers</span>
-                    <div class="text-900 font-medium text-xl">28441</div>
+        <div class="col-12 lg:col-6 xl:col-3">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Customers</span>
+                        <div class="text-900 font-medium text-xl">28441</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-inbox text-cyan-500 text-xl"></i>
+                    </div>LAILPKC just added a new course:
                 </div>
-                <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
-                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                    <i class="pi pi-inbox text-cyan-500 text-xl"></i>
-                </div>LAILPKC just added a new course:
+                <span class="text-green-500 font-medium">520 </span>
+                <span class="text-500">newly registered</span>
             </div>
-            <span class="text-green-500 font-medium">520 </span>
-            <span class="text-500">newly registered</span>
         </div>
-    </div>
-    <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card mb-0">
-            <div class="flex justify-content-between mb-3">
-                <div>
-                    <span class="block text-500 font-medium mb-3">Comments</span>
-                    <div class="text-900 font-medium text-xl">152 Unread</div>
+        <div class="col-12 lg:col-6 xl:col-3">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Comments</span>
+                        <div class="text-900 font-medium text-xl">152 Unread</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-comment text-purple-500 text-xl"></i>
+                    </div>
                 </div>
-                <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
-                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                    <i class="pi pi-comment text-purple-500 text-xl"></i>
-                </div>
+                <span class="text-green-500 font-medium">85 </span>
+                <span class="text-500">responded</span>
             </div>
-            <span class="text-green-500 font-medium">85 </span>
-            <span class="text-500">responded</span>
-        </div>
-    </div> -->
+        </div> -->
 
     <div class="col-12 xl:col-6">
         <div class="card">
@@ -155,8 +159,8 @@
                     <tr>
                         <td style="width: 15%; min-width: 5rem">
                             <img src="assets/demo/images/product/{{
-                                    'headphones.jpg'
-                                }}" class="shadow-4" alt="{{ course.course_name }}" width="50" />
+                                        'headphones.jpg'
+                                    }}" class="shadow-4" alt="{{ course.course_name }}" width="50" />
                         </td>
                         <td style="width: 40%; min-width: 7rem">
                             {{ course.course_name }}
@@ -176,179 +180,179 @@
             </p-table>
         </div>
         <!-- <div class="card">
-            <div class="flex justify-content-between align-items-center mb-5">
-                <h5>Best Selling Products</h5>
-                <div>
-                    <button
-                        pButton
-                        type="button"
-                        icon="pi pi-ellipsis-v"
-                        class="p-button-rounded p-button-text p-button-plain"
-                        (click)="menu.toggle($event)"
-                    ></button>
-                    <p-menu #menu [popup]="true" [model]="items"></p-menu>
+                <div class="flex justify-content-between align-items-center mb-5">
+                    <h5>Best Selling Products</h5>
+                    <div>
+                        <button
+                            pButton
+                            type="button"
+                            icon="pi pi-ellipsis-v"
+                            class="p-button-rounded p-button-text p-button-plain"
+                            (click)="menu.toggle($event)"
+                        ></button>
+                        <p-menu #menu [popup]="true" [model]="items"></p-menu>
+                    </div>
                 </div>
-            </div>
-            <ul class="list-none p-0 m-0">
-                <li
-                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
-                >
-                    <div>
-                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
-                            >Space T-Shirt</span
-                        >
-                        <div class="mt-1 text-600">Clothing</div>
-                    </div>
-                    <div class="mt-2 md:mt-0 flex align-items-center">
-                        <div
-                            class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
-                            [ngStyle]="{ height: '8px' }"
-                        >
-                            <div
-                                class="bg-orange-500 h-full"
-                                [ngStyle]="{ width: '50%' }"
-                            ></div>
-                        </div>
-                        <span class="text-orange-500 ml-3 font-medium"
-                            >%50</span
-                        >
-                    </div>
-                </li>
-                <li
-                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
-                >
-                    <div>
-                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
-                            >Portal Sticker</span
-                        >
-                        <div class="mt-1 text-600">Accessories</div>
-                    </div>
-                    <div
-                        class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
+                <ul class="list-none p-0 m-0">
+                    <li
+                        class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
                     >
-                        <div
-                            class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
-                            [ngStyle]="{ height: '8px' }"
-                        >
-                            <div
-                                class="bg-cyan-500 h-full"
-                                [ngStyle]="{ width: '16%' }"
-                            ></div>
+                        <div>
+                            <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                                >Space T-Shirt</span
+                            >
+                            <div class="mt-1 text-600">Clothing</div>
                         </div>
-                        <span class="text-cyan-500 ml-3 font-medium">%16</span>
-                    </div>
-                </li>
-                <li
-                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
-                >
-                    <div>
-                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
-                            >Supernova Sticker</span
-                        >
-                        <div class="mt-1 text-600">Accessories</div>
-                    </div>
-                    <div
-                        class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
+                        <div class="mt-2 md:mt-0 flex align-items-center">
+                            <div
+                                class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
+                                [ngStyle]="{ height: '8px' }"
+                            >
+                                <div
+                                    class="bg-orange-500 h-full"
+                                    [ngStyle]="{ width: '50%' }"
+                                ></div>
+                            </div>
+                            <span class="text-orange-500 ml-3 font-medium"
+                                >%50</span
+                            >
+                        </div>
+                    </li>
+                    <li
+                        class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
                     >
+                        <div>
+                            <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                                >Portal Sticker</span
+                            >
+                            <div class="mt-1 text-600">Accessories</div>
+                        </div>
                         <div
-                            class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
-                            [ngStyle]="{ height: '8px' }"
+                            class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
                         >
                             <div
-                                class="bg-pink-500 h-full"
-                                [ngStyle]="{ width: '67%' }"
-                            ></div>
+                                class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
+                                [ngStyle]="{ height: '8px' }"
+                            >
+                                <div
+                                    class="bg-cyan-500 h-full"
+                                    [ngStyle]="{ width: '16%' }"
+                                ></div>
+                            </div>
+                            <span class="text-cyan-500 ml-3 font-medium">%16</span>
                         </div>
-                        <span class="text-pink-500 ml-3 font-medium">%67</span>
-                    </div>
-                </li>
-                <li
-                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
-                >
-                    <div>
-                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
-                            >Wonders Notebook</span
-                        >
-                        <div class="mt-1 text-600">Office</div>
-                    </div>
-                    <div
-                        class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
+                    </li>
+                    <li
+                        class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
                     >
+                        <div>
+                            <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                                >Supernova Sticker</span
+                            >
+                            <div class="mt-1 text-600">Accessories</div>
+                        </div>
                         <div
-                            class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
-                            [ngStyle]="{ height: '8px' }"
+                            class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
                         >
                             <div
-                                class="bg-green-500 h-full"
-                                [ngStyle]="{ width: '35%' }"
-                            ></div>
+                                class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
+                                [ngStyle]="{ height: '8px' }"
+                            >
+                                <div
+                                    class="bg-pink-500 h-full"
+                                    [ngStyle]="{ width: '67%' }"
+                                ></div>
+                            </div>
+                            <span class="text-pink-500 ml-3 font-medium">%67</span>
                         </div>
-                        <span class="text-green-500 ml-3 font-medium">%35</span>
-                    </div>
-                </li>
-                <li
-                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
-                >
-                    <div>
-                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
-                            >Mat Black Case</span
-                        >
-                        <div class="mt-1 text-600">Accessories</div>
-                    </div>
-                    <div
-                        class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
+                    </li>
+                    <li
+                        class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
                     >
+                        <div>
+                            <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                                >Wonders Notebook</span
+                            >
+                            <div class="mt-1 text-600">Office</div>
+                        </div>
                         <div
-                            class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
-                            [ngStyle]="{ height: '8px' }"
+                            class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
                         >
                             <div
-                                class="bg-purple-500 h-full"
-                                [ngStyle]="{ width: '75%' }"
-                            ></div>
+                                class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
+                                [ngStyle]="{ height: '8px' }"
+                            >
+                                <div
+                                    class="bg-green-500 h-full"
+                                    [ngStyle]="{ width: '35%' }"
+                                ></div>
+                            </div>
+                            <span class="text-green-500 ml-3 font-medium">%35</span>
                         </div>
-                        <span class="text-purple-500 ml-3 font-medium"
-                            >%75</span
-                        >
-                    </div>
-                </li>
-                <li
-                    class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
-                >
-                    <div>
-                        <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
-                            >Robots T-Shirt</span
-                        >
-                        <div class="mt-1 text-600">Clothing</div>
-                    </div>
-                    <div
-                        class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
+                    </li>
+                    <li
+                        class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
                     >
+                        <div>
+                            <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                                >Mat Black Case</span
+                            >
+                            <div class="mt-1 text-600">Accessories</div>
+                        </div>
                         <div
-                            class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
-                            [ngStyle]="{ height: '8px' }"
+                            class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
                         >
                             <div
-                                class="bg-teal-500 h-full"
-                                [ngStyle]="{ width: '40%' }"
-                            ></div>
+                                class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
+                                [ngStyle]="{ height: '8px' }"
+                            >
+                                <div
+                                    class="bg-purple-500 h-full"
+                                    [ngStyle]="{ width: '75%' }"
+                                ></div>
+                            </div>
+                            <span class="text-purple-500 ml-3 font-medium"
+                                >%75</span
+                            >
                         </div>
-                        <span class="text-teal-500 ml-3 font-medium">%40</span>
-                    </div>
-                </li>
-            </ul>
-        </div> -->
+                    </li>
+                    <li
+                        class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
+                    >
+                        <div>
+                            <span class="text-900 font-medium mr-2 mb-1 md:mb-0"
+                                >Robots T-Shirt</span
+                            >
+                            <div class="mt-1 text-600">Clothing</div>
+                        </div>
+                        <div
+                            class="mt-2 md:mt-0 ml-0 md:ml-8 flex align-items-center"
+                        >
+                            <div
+                                class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem"
+                                [ngStyle]="{ height: '8px' }"
+                            >
+                                <div
+                                    class="bg-teal-500 h-full"
+                                    [ngStyle]="{ width: '40%' }"
+                                ></div>
+                            </div>
+                            <span class="text-teal-500 ml-3 font-medium">%40</span>
+                        </div>
+                    </li>
+                </ul>
+            </div> -->
     </div>
 
     <div class="col-12 xl:col-6">
         <!-- <div class="card">
-            <h5>Sales Overview</h5>
-            <p-chart
-                type="line"
-                [data]="chartData"
-                [options]="chartOptions"
-            ></p-chart>
-        </div> -->
+                <h5>Sales Overview</h5>
+                <p-chart
+                    type="line"
+                    [data]="chartData"
+                    [options]="chartOptions"
+                ></p-chart>
+            </div> -->
 
         <div class="card">
             <div class="flex align-items-center justify-content-between mb-4">
@@ -378,3 +382,90 @@
         </div>
     </div>
 </div>
+}@else {
+<div class="grid">
+
+    @for(i of [1, 2, 3,4]; track $index){
+    <div class="col-12 lg:col-6 xl:col-3">
+        <div class="p-4">
+            <!-- <div class="flex justify-content-between align-items-center content"> -->
+            <p-skeleton height="8rem" />
+            <!-- </div> -->
+        </div>
+    </div>
+    }
+
+
+
+    <div class="col-12 xl:col-6">
+        <div class="card">
+            <h5>Recent Courses</h5>
+            <p-table [value]="[1,2,3,4,5,6,7]" [paginator]="true" [rows]="7" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Image</th>
+                        <th pSortableColumn="course_name">
+                            Name <p-sortIcon field="course_name"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="course_session_start_date">
+                            Start Date
+                            <p-sortIcon field="course_session_start_date"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="course_session_start_date">
+                            End Date
+                            <p-sortIcon field="course_session_start_date"></p-sortIcon>
+                        </th>
+                        <th>View</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-course>
+                    <tr>
+                        <td style="width: 15%; min-width: 5rem">
+                            <p-skeleton />
+                        </td>
+                        <td style="width: 40%; min-width: 7rem">
+                            <p-skeleton />
+                        </td>
+                        <td style="width: 15%; min-width: 7rem">
+                            <p-skeleton />
+                        </td>
+                        <td style="width: 15%; min-width: 7rem">
+                            <p-skeleton />
+                        </td>
+                        <td style="width: 15%">
+                            <p-skeleton />
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+    </div>
+
+    <div class="col-12 xl:col-6">
+        <div class="card">
+            <div class="flex align-items-center justify-content-between mb-4">
+                <h5>Notifications</h5>
+                <div>
+                    <button pButton type="button" icon="pi pi-ellipsis-v"
+                        class="p-button-rounded p-button-text p-button-plain"></button>
+                </div>
+            </div>
+
+            <span class="block text-600 font-medium mb-3">Recent Activities</span>
+            <ul class="p-0 mx-0 mt-0 mb-4 list-none">
+                <li *ngFor="let notification of [1,2,3,4,5]" class=" py-2 border-bottom-1 surface-border">
+                    <div class="flex align-items-center w-full">
+                        <p-skeleton shape="circle" size="4rem" styleClass="mr-2" />
+                        <p-skeleton height="2rem" width="30rem" />
+
+                        <!-- <p-skeleton width="100%" height="2rem" /> -->
+
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+}

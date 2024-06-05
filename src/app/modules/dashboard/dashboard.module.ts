@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
@@ -9,6 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
+import { ContentHeaderComponent } from '../pages/content-header/content-header.component';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @NgModule({
     imports: [
@@ -20,8 +22,18 @@ import { DashboardsRoutingModule } from './dashboard-routing.module';
         StyleClassModule,
         PanelMenuModule,
         ButtonModule,
+        SkeletonModule,
+        ContentHeaderComponent,
         DashboardsRoutingModule
     ],
     declarations: [DashboardComponent]
 })
-export class DashboardModule { }
+export class DashboardModule implements OnInit {
+    header: object;
+
+    ngOnInit(): void {
+        this.header = [
+
+        ]
+    }
+}

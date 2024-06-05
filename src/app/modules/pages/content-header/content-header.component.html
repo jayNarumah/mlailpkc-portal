@@ -1,0 +1,27 @@
+<p-breadcrumb class="max-w-full" [model]="items()">
+    <ng-template pTemplate="item" let-item>
+
+        @if(item?.route){
+        <ng-container>
+            <a [routerLink]="item?.route" class="p-menuitem-link">
+                @if(item.icon){
+                <span [ngClass]="[item?.icon ? item?.icon : '', 'text-color']"></span>
+                }
+
+                <span class="text-primary font-semibold">{{ item?.label ?? '' }}</span>
+            </a>
+        </ng-container>
+        }@else {
+        <!-- <ng-template> -->
+        <!-- <a [href]="item?.url"> -->
+        @if(item.icon){
+        <span [class]="item?.icon ?? '' "></span>
+        }
+        <span class="text-color">{{ item?.label }}</span>
+        <!-- </a> -->
+        <!-- </ng-template> -->
+        }
+
+
+    </ng-template>
+</p-breadcrumb>

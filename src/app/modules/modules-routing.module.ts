@@ -10,7 +10,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
                 path: '', component: AppLayoutComponent,
                 children: [
                     { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-                    { path: 'profile', component: ProfilePageComponent },
+                    { path: 'profile', loadComponent: () => import('./pages/profile-page/profile-page.component').then(c => c.ProfilePageComponent), },
                     { path: 'course-schedule', loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule) },
                 ]
             },

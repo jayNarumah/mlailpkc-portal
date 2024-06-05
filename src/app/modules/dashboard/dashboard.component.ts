@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Product } from '../../demo/api/product';
 import { ProductService } from '../../demo/service/product.service';
@@ -12,8 +12,9 @@ import { DashboardStatsDto } from 'src/api/models/api/dashboard.model';
     styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+    contentHeader: MenuItem[] = [];
     items!: MenuItem[];
-
+    is_loading = signal<boolean>(true);
     products!: Product[];
 
     chartData: any;
@@ -40,6 +41,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.initChart();
+
+        this.contentHeader = [
+            { label: 'Home', route: '/landing' },
+            { label: 'Dasboard' },
+        ];
         // this.productService
         //     .getProductsSmall()
         //     .then((data) => (this.products = data));
@@ -55,9 +61,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 this.dashboardStats?.latestCourses.forEach((course) =>
                     this.recentNotifications.push(course.course_name)
                 );
+                this.is_loading.set(false);
             },
             error: (error) => {
                 alert('An error occurred while loading dashboard statistics!');
+                this.is_loading.set(false);
             },
         });
     }

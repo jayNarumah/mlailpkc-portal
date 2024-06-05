@@ -23,4 +23,8 @@ export class AuthEndpoint {
     forgotPassword(payload: ForgotPasswordDto) {
         return this.httpClient.patch<ForgotPasswordDto>(`${this.baseUrl}/forgot-password`, payload)
     }
+
+    logout() {
+        return this.httpClient.post(`${this.baseUrl}/logout`, {});
+    }
 }

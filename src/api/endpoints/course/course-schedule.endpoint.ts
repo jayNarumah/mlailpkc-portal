@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CourseScheduleResource } from 'src/api/resources/course-schedule.model';
+import { CourseSubscriptionResource } from 'src/api/resources/course-subscription.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -22,5 +23,13 @@ export class CourseScheduleEndpoint {
 
     subscribe(course_session_uid: string): Observable<{ data: CourseScheduleResource }> {
         return this.httpClient.post<{ data: CourseScheduleResource }>(`${this.parentUri}/subscribe`, { course_session_uid });
+    }
+
+    mySubscribtions(): Observable<{ data: CourseSubscriptionResource[] }> {
+        return this.httpClient.get<{ data: CourseSubscriptionResource[] }>(`${this.parentUri}/subscriptions/list`);
+    }
+
+    findSubscribtionByUid(uid: string): Observable<{ data: CourseSubscriptionResource }> {
+        return this.httpClient.get<{ data: CourseSubscriptionResource }>(`${this.parentUri}/subscriptions/find/${uid}`);
     }
 }

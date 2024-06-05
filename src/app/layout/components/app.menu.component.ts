@@ -18,7 +18,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Home',
                 items: [
                     {
-                        label: 'Dashboard', icon: 'assets/images/icons/dashboard.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules']
+                        label: 'Dashboard', icon: 'assets/images/icons/dashboard-colored.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules']
                     }
                 ]
             },
@@ -27,13 +27,13 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     // { label: 'Sample', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'] },
                     {
-                        label: 'Courses', icon: 'assets/images/icons/layers-2.png', height: '25', class: 'no-background', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'],
+                        label: 'Courses', height: '25', class: 'no-background', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'],
                         items: [
                             {
-                                label: 'List', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'],
+                                label: 'Explore', icon: 'assets/images/icons/my-courses.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/list'],
                             },
                             {
-                                label: 'My Courses', icon: 'assets/images/icons/layers-2.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/my-courses'],
+                                label: 'My Courses', icon: 'assets/images/icons/my_courses.png', height: '25', padding: 'pt-2 pl-2', routerLink: ['/modules/course-schedule/subscriptions'],
                             },
                         ]
                     }

@@ -18,6 +18,7 @@ import { JwtInterceptor } from './auth/services/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './auth/services/helpers/error.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { AppAuthEffect } from './store/auth/auth.effect';
 
 @NgModule({
     declarations: [AppComponent],
@@ -27,7 +28,7 @@ import { environment } from 'src/environments/environment';
         AppRoutingModule,
         AppLayoutModule,
         StoreModule.forRoot<AppState>(appReducer),
-        EffectsModule.forRoot([AppNotificationEffect]),
+        EffectsModule.forRoot([AppNotificationEffect, AppAuthEffect]),
         StoreDevtoolsModule.instrument({
             maxAge: 25,
             logOnly: environment.production,

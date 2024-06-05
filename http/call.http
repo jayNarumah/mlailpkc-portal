@@ -14,19 +14,19 @@ Accept: application/json
 }
 
 ###
-GET https://mlailpkc-api-839a553f0085.herokuapp.com/api/student/registration/verify-email/c24eeea2-1664-4f05-ab23-6f9635845fed/jawadrumah@gmail.com
+GET https://mlailpkc-api-839a553f0085.herokuapp.com/api/student/registration/verify-email/8d5d9716-8d09-4641-968b-d9f65d6eb0b7/jawadrumah@gmail.com
 Accept: application/json
 ###
 GET https://mlailpkc-api-839a553f0085.herokuapp.com/api/admin/student-registrations/list
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJqd3QtYXVkaWVuY2UiLCJpc3MiOiJtbGFpbHBrYy5taWwubmciLCJVU0VSX1VJRCI6IjJmNzNhNWMyLWM0M2ItNDZjNC1hZmIwLTYyMWM1ZmExYTQ1MyIsIlVTRVJfUEVSTUlTU0lPTlMiOltdLCJleHAiOjE3MTYzOTEzODd9.aBzCMuy0f_CNMNWwNcf7mM-FCBpcoEmW1kuqhslZT08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJqd3QtYXVkaWVuY2UiLCJpc3MiOiJtbGFpbHBrYy5taWwubmciLCJVU0VSX1VJRCI6ImQ5MTQ0NDU1LWEzOWUtNDk4OS05NjVlLWYzODdlNTQ0ZjIxOCIsIlVTRVJfUEVSTUlTU0lPTlMiOltdLCJleHAiOjE3MTY1NzI1NzV9.IzRv9cVbpvSA72XykcYKiPuE3sEjsD1MzAvYK5bNr3M
 
 ###
-POST https://mlailpkc-api-839a553f0085.herokuapp.com/api/admin/student-registrations/process/78829949-5888-4182-8f58-b97ca1a4b651
+POST https://mlailpkc-api-839a553f0085.herokuapp.com/api/admin/student-registrations/process/d9f7b26b-637f-43bf-af41-16195b364db3
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJqd3QtYXVkaWVuY2UiLCJpc3MiOiJtbGFpbHBrYy5taWwubmciLCJVU0VSX1VJRCI6IjJmNzNhNWMyLWM0M2ItNDZjNC1hZmIwLTYyMWM1ZmExYTQ1MyIsIlVTRVJfUEVSTUlTU0lPTlMiOltdLCJleHAiOjE3MTYzOTEzODd9.aBzCMuy0f_CNMNWwNcf7mM-FCBpcoEmW1kuqhslZT08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJqd3QtYXVkaWVuY2UiLCJpc3MiOiJtbGFpbHBrYy5taWwubmciLCJVU0VSX1VJRCI6ImQ5MTQ0NDU1LWEzOWUtNDk4OS05NjVlLWYzODdlNTQ0ZjIxOCIsIlVTRVJfUEVSTUlTU0lPTlMiOltdLCJleHAiOjE3MTY1NzI1NzV9.IzRv9cVbpvSA72XykcYKiPuE3sEjsD1MzAvYK5bNr3M
 
 {
     "action": "APPROVED"
