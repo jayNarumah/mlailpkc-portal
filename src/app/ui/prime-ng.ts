@@ -49,6 +49,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { CarouselModule } from 'primeng/carousel';
 import { RatingModule } from 'primeng/rating';
 import { SkeletonModule } from 'primeng/skeleton';
+import { AccordionModule } from 'primeng/accordion';
 
 export const PRIMENG_IMPORTS = [
     CarouselModule,
@@ -102,5 +103,5 @@ export const PRIMENG_IMPORTS = [
     BreadcrumbModule,
     ChipModule,
     DataViewModule,
-
+    AccordionModule,
 ];

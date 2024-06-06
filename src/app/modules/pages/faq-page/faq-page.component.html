@@ -1,0 +1,17 @@
+<div class="text-900 text-3xl font-medium mb-2 mt-1 nunito-font">
+    <span class="deep-green-font"
+        ><strong>Frequently Asked Questions</strong></span
+    >
+</div>
+
+<div
+    class="surface-card shadow-1 px-3 pb-3 border-round bg-light mt-3 nunito-font"
+>
+    <p-accordion [activeIndex]="0">
+        @for (faq of studentPortalFaqs(); track faq.uid) {
+        <p-accordionTab [header]="faq.title">
+            <p>{{ faq.content }}</p>
+        </p-accordionTab>
+        }
+    </p-accordion>
+</div>

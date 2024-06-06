@@ -1,6 +1,13 @@
-import { Component, ElementRef, ViewChild, computed, signal, input } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    ViewChild,
+    computed,
+    signal,
+    input,
+} from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { LayoutService } from "../service/app.layout.service";
+import { LayoutService } from '../service/app.layout.service';
 import { AppState } from '../../store/app.state';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../../auth/services/auth.service';
@@ -12,7 +19,7 @@ import { UserNotificationResource } from 'src/environments/api/models/user-notif
 @Component({
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html',
-    styleUrl: './app.topbar.component.scss'
+    styleUrl: './app.topbar.component.scss',
 })
 export class AppTopBarComponent {
     items!: MenuItem[];
@@ -25,7 +32,6 @@ export class AppTopBarComponent {
         return name[0];
     });
 
-
     @ViewChild('menubutton') menuButton!: ElementRef;
 
     @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
@@ -36,9 +42,8 @@ export class AppTopBarComponent {
         public layoutService: LayoutService,
         private readonly appStore: Store<AppState>,
         private readonly router: Router,
-        private readonly authService: AuthService,
-    ) {
-    }
+        private readonly authService: AuthService
+    ) {}
 
     ngOnInit() {
         console.log(this.notificationItems());
@@ -73,7 +78,9 @@ export class AppTopBarComponent {
                     {
                         label: 'Help',
                         icon: 'pi pi-question-circle',
-                        url: '',
+                        command: () => {
+                            this.goToFaqs();
+                        },
                     },
                     {
                         separator: true,
@@ -91,10 +98,9 @@ export class AppTopBarComponent {
     }
 
     logout() {
-        this.appStore.dispatch(AppAuthActions.logout())
+        this.appStore.dispatch(AppAuthActions.logout());
         this.router.navigate(['/auth/login']);
     }
-
 
     onNotificationSelect(event: any) {
         // this.router.navigate(['/']);
@@ -102,5 +108,9 @@ export class AppTopBarComponent {
 
     goToProfile() {
         this.router.navigate([`/modules/profile`]);
+    }
+
+    goToFaqs() {
+        this.router.navigate([`/modules/faqs`]);
     }
 }
