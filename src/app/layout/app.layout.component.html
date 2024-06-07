@@ -4,12 +4,14 @@
         <app-sidebar></app-sidebar>
     </div>
     <div class="layout-main-container">
-        <p-messages [(value)]="messages" [enableService]="false" (click)="viewMessage($event)" />
         <div class="layout-main">
+            <div class="sm:m-3 lg:mx-5">
+                <p-messages [(value)]="messages" [enableService]="false" (click)="viewMessage($event)" />
+            </div>
             <router-outlet></router-outlet>
         </div>
         <app-footer></app-footer>
     </div>
-    <app-config></app-config>
+    <!-- <app-config></app-config> -->
     <div class="layout-mask"></div>
 </div>

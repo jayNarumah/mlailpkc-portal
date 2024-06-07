@@ -1,4 +1,4 @@
-<div class="m-3">
+<div class="sm:m-3 lg:mx-5">
     <app-content-header [items]="contentHeader" />
 </div>
 
@@ -7,7 +7,7 @@
 @if(!is_loading()) {
 <div class="surface-ground m-3">
 
-    <div class="flex justify-content-end align-items-center m-3">
+    <div class="flex justify-content-end align-items-center my-3">
         <div class="col-12 col-md-12 lg:col-5 ">
             <p-inputGroup>
                 <input type="text" pInputText (keyup)="searchCourses($event.target.value)" placeholder="Keyword"
@@ -67,13 +67,13 @@
 }
 
 @if(is_loading()){
-<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
-    <div class="flex justify-content-end align-items-center m-3">
-        <div class="col-12 col-md-12 lg:col-5 ">
+<div class="surface-ground px-4 py-4 ">
+    <div class="flex justify-content-end align-items-center">
+        <div class="col-12 col-md-12 lg:col-5 mr-3 sm:mr-0">
             <p-skeleton width="90%" height="2rem" />
         </div>
     </div>
-    <div class="grid flex justify-content-center">
+    <div class="grid flex justify-content-center ">
         @for (course of [1,2,3, 4]; track $index) {
         <div class="border-1 surface-border shadow-2 border-round m-3 p-3 sm:col-12 lg:col-5">
             <div class="mb-3">
