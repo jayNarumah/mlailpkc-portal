@@ -55,7 +55,7 @@
                                 Seats Teaken:&nbsp;
                                 <p-tag [value]="session.seats_taken" class="p-4" [severity]="'danger'" />
                             </div>
-                            @if(!mySubscriptions[session.uid]){
+                            @if(!mySubscriptions()[session.uid]){
                             <p-button icon="pi pi-shopping-cart" label="Apply" (click)="confirm(session, $index)"
                                 [raised]="true" severity="primary " pTooltip="Apply for this session" />
                             }

@@ -1,10 +1,14 @@
-<div class="text-900 text-3xl font-medium mb-2 mt-1 nunito-font">
+<div class="sm:m-3 lg:mx-5">
+    <app-content-header [items]="contentHeader" />
+</div>
+
+<div class="text-900 text-3xl font-medium mb-2 mt-1 sm:mx-3 lg:mx-5 nunito-font">
     <span class="deep-green-font"><strong>Frequently Asked Questions</strong></span>
 </div>
 
 @defer (when !is_loading()) {
 @if(!is_loading()){
-<div class="surface-card shadow-2 px-3 pb-3 border-round bg-light mt-3 nunito-font">
+<div class="surface-card shadow-2 p-3 border-round bg-light sm:m-3 lg:mx-5 nunito-font">
     <p-accordion [activeIndex]="0">
         @for (faq of studentPortalFaqs(); track faq.uid) {
         <p-accordionTab [header]="faq.title">
@@ -17,12 +21,21 @@
 }
 
 @if(is_loading()){
-<div class="surface-card shadow-2 p-3 border-round bg-light mt-3 nunito-font">
+<div class="surface-card shadow-2 p-3 border-round bg-light sm:mx-3 lg:mx-5 nunito-font">
     <p-accordion [activeIndex]="0">
         @for (faq of [1, 2, 3, 4, 5]; track faq) {
-        <p-accordionTab header=". . . .">
-            <p> <p-skeleton styleClass="w-full border-round h-2rem" /> </p>
+        <!-- <p-accordion class="w-full" expandIcon="pi pi-plus" collapseIcon="pi pi-minus"> -->
+        <p-accordionTab>
+            <ng-template pTemplate="header">
+                <p-skeleton styleClass="w-6rem border-round h-2rem" />
+            </ng-template>
+            <p class="m-0">
+                <p-skeleton styleClass="w-full border-round h-2rem" />
+            </p>
         </p-accordionTab>
+        <!-- <p-accordionTab header=". . . .">
+                <p> <p-skeleton styleClass="w-full border-round h-2rem" /> </p>
+            </p-accordionTab> -->
         }
     </p-accordion>
 </div>

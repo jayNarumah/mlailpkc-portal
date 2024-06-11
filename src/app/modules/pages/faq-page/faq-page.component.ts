@@ -4,15 +4,17 @@ import { StudentPortalFaqEndpoint } from 'src/api/endpoints/misc.endpoint';
 import { StudentPortalFaq } from 'src/api/models/misc.model';
 import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { UiModule } from 'src/app/ui/ui.module';
+import { ContentHeaderComponent } from '../content-header/content-header.component';
 
 @Component({
     templateUrl: './faq-page.component.html',
     styleUrl: './faq-page.component.scss',
     standalone: true,
-    imports: [UiModule],
+    imports: [UiModule, ContentHeaderComponent],
 })
 export class FaqPageComponent implements OnInit {
-    breadcrumbItems!: MenuItem[];
+    contentHeader: MenuItem[];
+    // breadcrumbItems!: MenuItem[];
     is_loading = signal<boolean>(true);
 
     msgs: Message[] = [];
@@ -27,8 +29,11 @@ export class FaqPageComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        // this.appLoadingService.startLoading('Fetching record . . .');
-
+        this.contentHeader = [
+            { label: 'Home', route: '/landing' },
+            { label: 'Dasboard', route: '/modules' },
+            { label: 'Help' },
+        ];
         this.studentPortalFaqEndpoint.list().subscribe({
             next: (response) => {
                 this.studentPortalFaqs.set(response.data);

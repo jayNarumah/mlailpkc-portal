@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared.module';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ContentHeaderComponent } from 'src/app/modules/pages/content-header/content-header.component';
 import { CourseScheduleEndpoint } from 'src/api/endpoints/course/course-schedule.endpoint';
+import { MenuItem } from 'primeng/api';
 
 @Component({
     selector: 'app-my-courses',
@@ -29,7 +30,7 @@ import { CourseScheduleEndpoint } from 'src/api/endpoints/course/course-schedule
     styleUrl: './my-subscriptions.component.scss'
 })
 export class MySubscriptionsComponent implements OnInit {
-    contentHeader: object;
+    contentHeader: MenuItem[];
     layout: string = 'list';
     is_loading = signal<boolean>(true);
     subscriptions = signal<CourseSubscriptionResource[]>([]);

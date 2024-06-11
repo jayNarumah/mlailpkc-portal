@@ -21,8 +21,8 @@ export class CourseScheduleEndpoint {
         return this.httpClient.get<{ data: CourseScheduleResource }>(`${this.parentUri}/find/${uid}`);
     }
 
-    subscribe(course_session_uid: string): Observable<{ data: CourseScheduleResource }> {
-        return this.httpClient.post<{ data: CourseScheduleResource }>(`${this.parentUri}/subscribe`, { course_session_uid });
+    subscribe(course_session_uid: string): Observable<{ data: CourseSubscriptionResource }> {
+        return this.httpClient.post<{ data: CourseSubscriptionResource }>(`${this.parentUri}/subscribe`, { course_session_uid });
     }
 
     mySubscribtions(): Observable<{ data: CourseSubscriptionResource[] }> {

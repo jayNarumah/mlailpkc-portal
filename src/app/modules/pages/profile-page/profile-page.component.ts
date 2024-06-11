@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, signal } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ConfirmationService, MenuItem, Message, MessageService, PrimeNGConfig } from 'primeng/api';
+import { ConfirmationService, MenuItem, Message } from 'primeng/api';
 import { FileUpload } from 'primeng/fileupload';
 import { ProfileEndpoint } from 'src/api/endpoints/auth/profile.endpoint';
 import { StudentCategoryEndpoint } from 'src/api/endpoints/student-category.endpoint';
@@ -14,19 +14,20 @@ import { AppAuthActions } from 'src/app/store/auth/auth.action';
 import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { AppNotificationService } from 'src/app/store/services/app-notification.service';
 import { UiModule } from 'src/app/ui/ui.module';
+import { ContentHeaderComponent } from '../content-header/content-header.component';
 
 @Component({
     selector: 'app-profile-page',
     templateUrl: './profile-page.component.html',
     styleUrl: './profile-page.component.scss',
     standalone: true,
-    imports: [UiModule, ReactiveFormsModule]
+    imports: [UiModule, ReactiveFormsModule, ContentHeaderComponent]
 })
 export class ProfilePageComponent implements OnInit {
 
     @ViewChild('profilePhotoUpload', { static: false, read: ElementRef }) profilePhotoUpload!: ElementRef<FileUpload>;
-
-    breadcrumbItems!: MenuItem[];
+    contentHeader: MenuItem[];
+    // breadcrumbItems!: MenuItem[];
     items!: MenuItem[];
     is_loading = signal<boolean>(true);
 
@@ -80,7 +81,12 @@ export class ProfilePageComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.appLoadingService.startLoading('Fetching record . . .');
+        this.contentHeader = [
+            { label: 'Home', route: '/landing' },
+            { label: 'Dasboard', route: '/modules' },
+            { label: 'Profile' },
+        ];
+
         this.profileEndpoint.myProfile().subscribe({
             next: (data) => {
                 this.student = data.data;
@@ -88,7 +94,8 @@ export class ProfilePageComponent implements OnInit {
                 // this.appLoadingService.stopLoading();
             },
             error: (err) => {
-                this.appLoadingService.stopLoading();
+                // this.appLoadingService.stopLoading();
+                this.is_loading.set(false);
                 this.appNotificationService.showError({ title: err });
             },
         });

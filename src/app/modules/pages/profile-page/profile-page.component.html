@@ -1,3 +1,7 @@
+<div class="sm:m-3 lg:mx-5">
+    <app-content-header [items]="contentHeader" />
+</div>
+
 <p-dialog header="Profile Photo" [(visible)]="displayProfilePhotoDialog" [modal]="true" [draggable]="false"
     [resizable]="false" [closable]="true" [title]="false">
     <div class="m-0 text-center">
@@ -26,11 +30,11 @@
     </div>
 </p-dialog>
 
-<div class="text-900 text-3xl font-medium mb-2 mt-1 nunito-font">
+<div class="text-900 text-3xl font-medium mb-2 mt-1 sm:mx-3 lg:mx-5 nunito-font">
     <span class="deep-green-font"><strong>User Profile</strong></span>
 </div>
 
-<div class="surface-card shadow-1 px-3 pb-3 border-round bg-light mt-3 nunito-font">
+<div class="surface-card shadow-1 px-3 pb-3 border-round bg-light sm:m-3 lg:mx-5 nunito-font">
     @defer (when !is_loading()) {
     @if(!is_loading()){
     <div *ngIf="showDetails" class="px-2 py-5 md:px-1 lg:px-3">
