@@ -43,26 +43,9 @@ export class AppTopBarComponent {
         private readonly appStore: Store<AppState>,
         private readonly router: Router,
         private readonly authService: AuthService
-    ) {}
+    ) { }
 
     ngOnInit() {
-        console.log(this.notificationItems());
-
-        // this.notificationItems = [
-        //     {
-        //         label: 'MLAILPKC-001 Lecture is to be started today by 2:30pm',
-        //         routerLink: '/notification/notifications',
-        //     },
-        //     {
-        //         label: 'You have MLAILPKC-002 exam today by 12:30a.m',
-        //         routerLink: '/notification/notifications',
-        //     },
-        //     {
-        //         label: 'MLAILPKC-005 Lecture is to be started today by 2:30pm',
-        //         routerLink: '/notification/notifications',
-        //     },
-        // ];
-
         this.items = [
             {
                 label: 'Links',

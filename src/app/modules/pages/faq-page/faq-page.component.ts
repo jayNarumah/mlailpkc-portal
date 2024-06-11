@@ -13,6 +13,7 @@ import { UiModule } from 'src/app/ui/ui.module';
 })
 export class FaqPageComponent implements OnInit {
     breadcrumbItems!: MenuItem[];
+    is_loading = signal<boolean>(true);
 
     msgs: Message[] = [];
     tab = 0;
@@ -23,14 +24,15 @@ export class FaqPageComponent implements OnInit {
     constructor(
         private readonly appLoadingService: AppLoadingService,
         private readonly studentPortalFaqEndpoint: StudentPortalFaqEndpoint
-    ) {}
+    ) { }
 
     ngOnInit(): void {
-        this.appLoadingService.startLoading('Fetching record . . .');
+        // this.appLoadingService.startLoading('Fetching record . . .');
 
         this.studentPortalFaqEndpoint.list().subscribe({
             next: (response) => {
                 this.studentPortalFaqs.set(response.data);
+                this.is_loading.update(() => false);
             },
             error: (error) => console.log(error),
             complete: () => {

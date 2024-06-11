@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, signal } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ConfirmationService, MenuItem, Message, MessageService, PrimeNGConfig } from 'primeng/api';
@@ -28,6 +28,7 @@ export class ProfilePageComponent implements OnInit {
 
     breadcrumbItems!: MenuItem[];
     items!: MenuItem[];
+    is_loading = signal<boolean>(true);
 
     canSubmitNewPassword = false;
     canSubmitProfile = false;
@@ -83,8 +84,8 @@ export class ProfilePageComponent implements OnInit {
         this.profileEndpoint.myProfile().subscribe({
             next: (data) => {
                 this.student = data.data;
-
-                this.appLoadingService.stopLoading();
+                this.is_loading.set(false);
+                // this.appLoadingService.stopLoading();
             },
             error: (err) => {
                 this.appLoadingService.stopLoading();

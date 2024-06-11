@@ -1,6 +1,6 @@
 {
-    "name": "sakai-ng",
-    "version": "17.0.0",
+    "name": "Mlailpkc Portal",
+    "version": "18.0.0",
     "license": "MIT",
     "scripts": {
         "ng": "ng",

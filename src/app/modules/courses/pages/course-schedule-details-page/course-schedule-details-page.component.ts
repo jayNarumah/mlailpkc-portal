@@ -10,7 +10,6 @@ import { AppLoadingService } from 'src/app/store/services/app-loading.service';
 import { CourseScheduleEndpoint } from 'src/api/endpoints/course/course-schedule.endpoint';
 import { CourseSessionResource } from 'src/api/resources/session.model';
 import { ContentHeaderComponent } from '../../../pages/content-header/content-header.component';
-
 @Component({
     selector: 'app-course-schedule-details-page',
     standalone: true,
@@ -24,6 +23,9 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
     is_loading = signal<boolean>(true);
     dialogPosition = 'center';
     course = signal<CourseScheduleResource>(null);
+    // mySubscriptions = signal<string[]>([]);
+    mySubscriptions = signal<{ [key: string]: boolean }>({});
+
     constructor(
         private route: ActivatedRoute,
         private confirmationService: ConfirmationService,
@@ -39,6 +41,20 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
             { label: 'Explore Courses', route: '/modules/course-schedule/list' },
             { label: 'Details' },
         ];
+
+        //fetch the list of my subscriptions
+        this.courseScheduleEndpoint.mySubscribtions().subscribe({
+            next: (response) => {
+                response.data.forEach(item => {
+                    this.mySubscriptions()[item.uid] = true
+                })
+                this.is_loading.set(false);
+            },
+            error: (err) => {
+                console.log('Error', err);
+                this.is_loading.set(false);
+            }
+        });
 
         this.route.data
             .subscribe({
@@ -76,6 +92,7 @@ export class CourseScheduleDetailsPageComponent implements OnInit {
                 this.is_loading.set(true);
                 this.courseScheduleEndpoint.subscribe(data.uid).subscribe({
                     next: (response) => {
+                        this.mySubscriptions()[response.data.uid] = true;
                         this.appLoadingService.stopLoading();
                         this.is_loading.set(false);
                         this.appNotificationService.showSuccess({
