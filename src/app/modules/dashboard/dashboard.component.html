@@ -1,10 +1,10 @@
-<div class="mb-3">
+<div class="sm:mx-3 lg:mx-5 mb-5">
     <app-content-header [items]="contentHeader" />
 </div>
 @if(!is_loading()){
-<div class="grid">
+<div class="grid sm:mx-3 lg:mx-4">
     <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card dark-card gradient-background p-4">
+        <div class="card dark-card gradient-background hover:shadow-6 p-4">
             <div class="flex justify-content-between align-items-center content">
                 <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section mr-3"
                     [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
@@ -19,24 +19,8 @@
                     <span class="text-500">since last visit</span> -->
         </div>
     </div>
-    <!-- <div class="col-12 lg:col-6 xl:col-3">
-            <div class="card dark-card p-4">
-                <div class="flex justify-content-between align-items-center content">
-                    <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
-                        [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
-                        <i class="pi pi-warehouse text-blue-800 text-5xl"></i>
-                    </div>
-                    <div>
-                        <span class="block text-500 font-medium mb-3">Available Courses</span>
-                        <div class="text-1000 font-bold text-5xl">
-                            {{ dashboardStats?.courses_count ?? 0 }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card shadow-2 p-4">
+        <div class="card shadow-2 hover:shadow-6 p-4">
             <div class="flex justify-content-between align-items-center">
                 <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
                     [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
@@ -54,7 +38,7 @@
         </div>
     </div>
     <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card dark-card gradient-background p-4">
+        <div class="card dark-card gradient-background hover:shadow-6 p-4">
             <div class="flex justify-content-between align-items-center content">
                 <div class="flex align-items-center justify-content-center bg-blue-200 border-round icon-section"
                     [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
@@ -70,7 +54,7 @@
         </div>
     </div>
     <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card shadow-2 p-4">
+        <div class="card shadow-2 hover:shadow-6 p-4">
             <div class="flex justify-content-between align-items-center">
                 <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
                     [ngStyle]="{ width: '5.5rem', height: '5.5rem' }">
@@ -85,55 +69,6 @@
                 <span class="text-500">since last visit</span> -->
         </div>
     </div>
-    <!-- <div class="col-12 lg:col-6 xl:col-3">
-            <div class="card mb-0">
-                <div class="flex justify-content-between mb-3">
-                    <div>
-                        <span class="block text-500 font-medium mb-3">Revenue</span>
-                        <div class="text-900 font-medium text-xl">$2.100</div>
-                    </div>
-                    <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
-                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                        <i class="pi pi-map-marker text-orange-500 text-xl"></i>
-                    </div>
-                </div>
-                <span class="text-green-500 font-medium">%52+ </span>
-                <span class="text-500">since last week</span>
-            </div>
-        </div>
-        <div class="col-12 lg:col-6 xl:col-3">
-            <div class="card mb-0">
-                <div class="flex justify-content-between mb-3">
-                    <div>
-                        <span class="block text-500 font-medium mb-3">Customers</span>
-                        <div class="text-900 font-medium text-xl">28441</div>
-                    </div>
-                    <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
-                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                        <i class="pi pi-inbox text-cyan-500 text-xl"></i>
-                    </div>LAILPKC just added a new course:
-                </div>
-                <span class="text-green-500 font-medium">520 </span>
-                <span class="text-500">newly registered</span>
-            </div>
-        </div>
-        <div class="col-12 lg:col-6 xl:col-3">
-            <div class="card mb-0">
-                <div class="flex justify-content-between mb-3">
-                    <div>
-                        <span class="block text-500 font-medium mb-3">Comments</span>
-                        <div class="text-900 font-medium text-xl">152 Unread</div>
-                    </div>
-                    <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
-                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                        <i class="pi pi-comment text-purple-500 text-xl"></i>
-                    </div>
-                </div>
-                <span class="text-green-500 font-medium">85 </span>
-                <span class="text-500">responded</span>
-            </div>
-        </div> -->
-
     <div class="col-12 xl:col-6">
         <div class="card">
             <h5>Recent Courses</h5>
