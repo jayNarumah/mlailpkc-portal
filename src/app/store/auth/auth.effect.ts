@@ -1,8 +1,10 @@
-import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { concatLatestFrom } from '@ngrx/operators';
+
 import { exhaustMap, map, catchError, of } from "rxjs";
-import { AuthEndpoint } from "src/app/auth/services/auth.endpoint";
-import { AppAuthActions } from "./auth.action";
 import { Injectable } from "@angular/core";
+import { AppAuthActions } from './auth.action';
+import { AuthEndpoint } from 'src/app/auth/services/auth.endpoint';
 
 @Injectable()
 export class AppAuthEffect {
